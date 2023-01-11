@@ -44,10 +44,7 @@ const Feed = ({ navigate }) => {
           console.log("yay")
           // console.log(response.json())
           window.location.reload();
-
-
-          posts.push(newPost);
-          return response.json()
+          // return response.json()
         } else {
           console.log("noooo")
           // navigate('/signup')
