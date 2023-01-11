@@ -44,4 +44,27 @@ describe("Feed", () => {
       expect(interception.response.body.token).to.eq("responseToken")
     });
   })
+
+  // it('Adds new post to feed', () => {
+  //   window.localStorage.setItem("token", "fakeToken")
+
+  //   cy.mount(<Feed navigate={navigate}/>)
+
+  //   cy.get("#post").type("some post");
+  //   cy.get("#submit").click();
+
+  //   cy.intercept('GET', '/posts', (req) => {
+  //     req.reply({
+  //       statusCode: 200,
+  //       body: { posts: [
+  //         {_id: 1, message: "some post"},
+  //       ] }
+  //     })
+  //   }).as('getPosts')
+
+  //   cy.wait('@getPosts').then(() => {
+  //     cy.get('[data-cy="post"]')
+  //     .should('contain.text', "some post")
+  //   });
+  // });
 })
