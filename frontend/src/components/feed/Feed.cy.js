@@ -30,7 +30,7 @@ describe("Feed", () => {
     window.localStorage.setItem("token", "fakeToken")
 
     // mock response on post requests sent to '/posts'
-    cy.intercept('POST', '/posts', { message: "OK", token: "fakeToken" }).as("newPostRequest")
+    cy.intercept('POST', '/posts', { message: "OK", token: "responseToken" }).as("newPostRequest")
 
     // pointing to where component runs, loading it on fake web page
     cy.mount(<Feed navigate={navigate}/>)
@@ -38,8 +38,10 @@ describe("Feed", () => {
     cy.get("#post").type("some post");
     cy.get("#submit").click();
 
-    cy.wait('@newPostRequest').then( interception => {
-      expect(interception.response.body.token).to.eq("fakeToken")
+    cy.wait('@newPostRequest').then(interception => {
+      expect(interception.request.body.message).to.eq('some post');
+      expect(interception.request.headers.authorization).to.eq('Bearer fakeToken');
+      expect(interception.response.body.token).to.eq("responseToken")
     });
   })
 })
