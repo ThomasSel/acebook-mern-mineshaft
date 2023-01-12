@@ -45,26 +45,50 @@ describe("Feed", () => {
     });
   })
 
-  // it('Adds new post to feed', () => {
-  //   window.localStorage.setItem("token", "fakeToken")
+  it('Adds new post to feed', () => {
+    window.localStorage.setItem("token", "fakeToken")
 
-  //   cy.mount(<Feed navigate={navigate}/>)
+    cy.intercept({ method: 'GET', path: '/posts', times: 1 }, (req) => {
+      req.reply({
+        statusCode: 200,
+        body: { posts: [
+          {_id: 1, message: "some post"},
+        ] }
+      })
+    }).as('getPosts')
 
-  //   cy.get("#post").type("some post");
-  //   cy.get("#submit").click();
+    cy.mount(<Feed navigate={navigate}/>)
 
-  //   cy.intercept('GET', '/posts', (req) => {
-  //     req.reply({
-  //       statusCode: 200,
-  //       body: { posts: [
-  //         {_id: 1, message: "some post"},
-  //       ] }
-  //     })
-  //   }).as('getPosts')
+    cy.wait('@getPosts').then(() => {
 
-  //   cy.wait('@getPosts').then(() => {
-  //     cy.get('[data-cy="post"]')
-  //     .should('contain.text', "some post")
-  //   });
-  // });
+      cy.intercept('POST', '/posts', (req) => {
+        req.reply({
+          statusCode: 201,
+        })
+      })
+
+      cy.intercept('GET', '/posts', (req) => {
+        req.reply({
+          statusCode: 200,
+          body: { posts: [
+            {_id: 1, message: "new post"},
+          ] }
+        })
+      }).as('getPosts2')
+  
+      cy.get("#post").type("some post");
+      cy.get("#submit").click();
+
+      cy.wait('@getPosts2').then(() => {
+        cy.get('[data-cy="post"]')
+        .should('contain.text', "new post")
+  
+      });
+
+    });
+
+    // cy.intercept('POST', '/posts', { message: "OK", token: "responseToken" }).as("newPostRequest");
+
+  
+  });
 })
