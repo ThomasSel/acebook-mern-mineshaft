@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import Post from '../post/Post'
+import Post from "../post/Post";
+import React, { useEffect, useState } from "react";
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
   const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const [newPost, setNewPost] = useState("")
 
   useEffect(() => {
     if(token) {
@@ -29,6 +30,14 @@ const Feed = ({ navigate }) => {
     window.localStorage.removeItem("token")
     navigate('/login')
   }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  }
+
+  const handleInputChange = (event) => {
+    setNewPost(event.target.textContents)
+  }
   
     if(token) {
       return(
@@ -37,6 +46,12 @@ const Feed = ({ navigate }) => {
             <button onClick={logout}>
               Logout
             </button>
+
+            <form onSubmit={handleSubmit}>
+              <textarea id="postInput" onChange={handleInputChange}>{newPost}</textarea>
+              <input id="submitPost" type={"submit"} value={"submit"}></input>
+            </form>
+            
 
           <div id='feed' role="feed">
               {posts.map(
