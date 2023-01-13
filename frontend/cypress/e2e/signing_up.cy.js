@@ -39,6 +39,7 @@ describe("Signing up", () => {
   it("with missing email, redirects to '/signup'", () => {
     cy.visit("/signup");
     cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
     cy.get("#first-name").type("First");
     cy.get("#last-name").type("Last");
     cy.get("#user-dob").type("2000-10-10");
@@ -51,6 +52,7 @@ describe("Signing up", () => {
     cy.visit("/signup");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
     cy.get("#last-name").type("Last");
     cy.get("#user-dob").type("2000-10-10");
     cy.get("#submit").click();
@@ -62,6 +64,7 @@ describe("Signing up", () => {
     cy.visit("/signup");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
     cy.get("#first-name").type("First");
     cy.get("#user-dob").type("2000-10-10");
     cy.get("#submit").click();
@@ -73,6 +76,7 @@ describe("Signing up", () => {
     cy.visit("/signup");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
     cy.get("#first-name").type("First");
     cy.get("#last-name").type("Last");
     cy.get("#submit").click();

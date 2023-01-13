@@ -19,7 +19,7 @@ describe("Signing up", () => {
     })
   })
 
-  it("confirms that the passwords match", () => {
-    
+  xit("confirms that the passwords match", () => {
+   
   })
 })
