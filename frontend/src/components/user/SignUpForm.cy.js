@@ -12,6 +12,7 @@ describe("Signing up", () => {
     cy.get("#user-dob").type("2002-10-10");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
     cy.get("#submit").click();
     cy.wait('@signUpRequest').then( interception => {
       expect(interception.response.body.message).to.eq("OK")
