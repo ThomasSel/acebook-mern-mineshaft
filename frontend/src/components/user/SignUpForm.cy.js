@@ -17,4 +17,8 @@ describe("Signing up", () => {
       expect(interception.response.body.message).to.eq("OK")
     })
   })
+
+  it("confirms that the passwords match", () => {
+    
+  })
 })
