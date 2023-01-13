@@ -9,7 +9,7 @@ describe("Signing up", () => {
 
     cy.get("#first-name").type("First Name");
     cy.get("#last-name").type("Last Name");
-    cy.get("#birthday").type("10/10/00");
+    cy.get("#user-dob").type("2002-10-10");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
     cy.get("#submit").click();
