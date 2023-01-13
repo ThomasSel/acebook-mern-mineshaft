@@ -32,31 +32,39 @@ const Feed = ({ navigate }) => {
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
+
+    fetch('/posts', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify({ message: newPost }),
+    });
   }
 
   const handleInputChange = (event) => {
-    setNewPost(event.target.textContents)
+    setNewPost(event.target.value)
   }
   
     if(token) {
       return(
         <>
           <h2>Posts</h2>
-            <button onClick={logout}>
-              Logout
-            </button>
+          <button onClick={logout}>
+            Logout
+          </button>
 
-            <form onSubmit={handleSubmit}>
-              <textarea id="postInput" onChange={handleInputChange}>{newPost}</textarea>
-              <input id="submitPost" type={"submit"} value={"submit"}></input>
-            </form>
-            
+          <form onSubmit={handleSubmit}>
+            <textarea id="postInput" placeholder="Add a new post" onChange={handleInputChange} value={newPost}></textarea>
+            <input id="submitPost" type={"submit"} value={"submit"}></input>
+          </form>
 
           <div id='feed' role="feed">
-              {posts.map(
-                (post) => ( <Post post={ post } key={ post._id } /> )
-              )}
+            {posts.map(
+              (post) => ( <Post post={ post } key={ post._id } /> )
+            )}
           </div>
         </>
       )
