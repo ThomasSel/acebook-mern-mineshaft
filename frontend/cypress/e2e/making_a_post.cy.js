@@ -1,6 +1,6 @@
 describe("Making a post", () => {
-  before(async () => {
-    await cy.resetPosts();
+  beforeEach(() => {
+    cy.resetPosts();
     cy.signup("user@email.com", "12345678");
     cy.login("user@email.com", "12345678");
   });
