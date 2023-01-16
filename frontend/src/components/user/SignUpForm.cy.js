@@ -3,11 +3,9 @@ const navigate = () => {}
 
 describe("Signing up", () => {
   it("calls the /users endpoint", () => {
-
-    cy.intercept('POST', '/users', { message: "OK" }).as("signUpRequest")
-
     cy.mount(<SignUpForm navigate={navigate}/>)
 
+    cy.intercept('POST', '/users', { message: "OK" }).as("signUpRequest")
 
     cy.get("#first-name").type("First Name");
     cy.get("#last-name").type("Last Name");
@@ -21,7 +19,4 @@ describe("Signing up", () => {
     })
   })
 
-  xit("confirms that the passwords match", () => {
-   
-  })
 })

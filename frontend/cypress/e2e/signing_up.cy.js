@@ -83,4 +83,19 @@ describe("Signing up", () => {
 
     cy.url().should("include", "/signup");
   });
+
+  it("If user is under 14 years old, stays on '/signup'", () => {
+    cy.visit("/signup");
+    cy.get("#email").type("someone@example.com");
+    cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
+    cy.get("#first-name").type("First");
+    cy.get("#last-name").type("Last");
+    cy.get("#user-dob").type("2017-12-12");
+
+    cy.get("#submit").click();
+
+    cy.url().should("include", "/signup");
+  });
+
 });
