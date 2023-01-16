@@ -41,7 +41,13 @@ const Feed = ({ navigate }) => {
         'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({ message: newPost }),
-    });
+    })
+    .then(response => response.json())
+    .then(async data => {
+      window.localStorage.setItem("token", data.token)
+      setToken(window.localStorage.getItem("token"))
+      setPosts(data.posts);
+    })
   }
 
   const handleInputChange = (event) => {

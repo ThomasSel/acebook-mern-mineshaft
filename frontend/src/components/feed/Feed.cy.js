@@ -31,7 +31,7 @@ describe("Feed", () => {
     window.localStorage.setItem("token", "fakeToken")
 
     // mock response on post requests sent to '/posts'
-    cy.intercept('POST', '/posts', { message: "OK", token: "responseToken" }).as("newPostRequest")
+    cy.intercept('POST', '/posts', { message: "OK", token: "responseToken", posts: [{_id: 1, message: 'some post'}]}).as("newPostRequest")
 
     // pointing to where component runs, loading it on fake web page
     cy.mount(<Feed navigate={navigate}/>)
@@ -44,5 +44,19 @@ describe("Feed", () => {
       expect(interception.request.headers.authorization).to.eq('Bearer fakeToken');
       expect(interception.response.body.token).to.eq("responseToken")
     });
+  }) 
+  it("Displays a new post on the page", () => {
+    window.localStorage.setItem("token", "fakeToken")
+    
+    cy.intercept('POST', '/posts', { message: "OK", token: "responseToken", posts: [{_id: 1, message: 'some post'}]}).as("newPostRequest")
+    cy.mount(<Feed navigate={navigate}/>)
+
+    cy.get("#postInput").type("some post");
+    cy.get("#submitPost").click();
+    
+    cy.wait("@newPostRequest").then(() =>{
+      cy.get('[data-cy="post"]')
+      .should('contain.text', 'some post')
+    })
   })
 })
