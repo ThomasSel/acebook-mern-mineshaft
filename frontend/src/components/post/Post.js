@@ -26,10 +26,9 @@ const Post = ({ post }) => {
               <div class="ml-3">
                 <p class="text-base font-medium leading-6">
                   {/* Here we can add the user's first and last name */}
-                  Random User
+                  Firstname Lastname
                   <span class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300">
-                    {/* here we can add the user's username */}
-                    @randomuser - {timeAgo}
+                    {/* here we can add the user's username */}  @username - {timeAgo}
                   </span>
                 </p>
               </div>
@@ -44,12 +43,12 @@ const Post = ({ post }) => {
             <span class="text-blue-400">#TellBook</span>
           </p>
           {/* Uncomment code below if you want to add an image */}
-          <div class="pr-6 pt-3 md:flex-shrink">
+          {/* <div class="pr-6 pt-3 md:flex-shrink">
             <img
               class="h-64 w-full rounded-lg"
               src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg"
             />
-          </div>
+          </div> */}
           {/* end of the image */}
           {/* - - - - - - - -  */}
           {/* div container for like and comment buttons below*/}
