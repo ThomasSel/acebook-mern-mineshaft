@@ -50,7 +50,15 @@ describe("/posts", () => {
       let newPayload = JWT.decode(response.body.token, process.env.JWT_SECRET);
       let originalPayload = JWT.decode(token, process.env.JWT_SECRET);
       expect(newPayload.iat > originalPayload.iat).toEqual(true);
-    });  
+    });
+
+    test("returns an update list of posts", async () => {
+      let response = await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ message: "hello world", token: token });
+      expect(response.body.posts[0].message).toEqual('hello world');
+    });
   });
   
   describe("POST, when token is missing", () => {
