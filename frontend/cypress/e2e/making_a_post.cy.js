@@ -1,8 +1,10 @@
 describe("Making a post", () => {
-  before(() => {
+  before(async () => {
+    await cy.resetPosts();
     cy.signup("user@email.com", "12345678")
     cy.login("user@email.com", "12345678")
   })
+  
   it("user succesfully creates a post", () => {
     cy.visit("/posts");
     cy.get("#postInput").type("yay");

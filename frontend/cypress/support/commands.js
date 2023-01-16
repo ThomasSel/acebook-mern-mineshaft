@@ -24,6 +24,13 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get("#password").type(password);
   cy.get("#submit").click();
 })
+
+Cypress.Commands.add('resetPosts', async () => {
+  await fetch('/posts', {
+    method: 'DELETE'
+  })
+});
+
 //
 //
 // -- This is a child command --
