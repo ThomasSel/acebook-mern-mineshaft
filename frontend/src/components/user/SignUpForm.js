@@ -12,7 +12,13 @@ const SignUpForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (password === password2) {
+    const dateNow = new Date(Date.now());
+    const dob = new Date(event.target.value);
+    const ms = dateNow.getTime() - dob.getTime();
+    const dif = new Date(ms);
+    const yearDif = Math.abs(dif.getUTCFullYear() - 1970);
+
+    if (password === password2 && yearDif >= 14) {
       fetch( '/users', {
         method: 'post',
         headers: {
@@ -29,7 +35,11 @@ const SignUpForm = ({ navigate }) => {
           }
         })
     } else {
-      window.alert("Passwords do not match!");
+        if (password !== password2) {
+          window.alert("Passwords do not match!");
+        } else {
+          window.alert("User must be 14 years of age or older!");
+        }
     }
   }
 
@@ -50,7 +60,7 @@ const SignUpForm = ({ navigate }) => {
   }
 
   const handleUserDobChange = (event) => {
-    setUserDob(event.target.value)
+    setUserDob(event.target.value);
   }
 
   const handlePassword2Change = (event) => {
@@ -60,12 +70,12 @@ const SignUpForm = ({ navigate }) => {
 
     return (
       <form onSubmit={handleSubmit}>
-          <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
-          <input placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
-          <input placeholder="Confirm Password" id="confirm-password" type='password' value={ password2 } onChange={handlePassword2Change} />
           <input placeholder="First Name" id="first-name" type='text' value={ firstName } onChange={handleFirstNameChange} />
           <input placeholder="Last Name" id="last-name" type='text' value={ lastName } onChange={handleLastNameChange} />
           <input placeholder="D.O.B." id="user-dob" type='date' value={ userDob } onChange={handleUserDobChange} />
+          <input placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
+          <input placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
+          <input placeholder="Confirm Password" id="confirm-password" type='password' value={ password2 } onChange={handlePassword2Change} />
           <input id='submit' type="submit" value="Submit" />
       </form>
     );
