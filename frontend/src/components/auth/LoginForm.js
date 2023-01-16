@@ -36,26 +36,57 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Email"
-          id="email"
-          type="text"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <input
-          placeholder="Password"
-          id="password"
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <input role="submit-button" id="submit" type="submit" value="Submit" />
-      </form>
-
+      <div>
+        <h1 className="font-lobster text-blue-500 text-center text-7xl">
+          acebook
+        </h1>
+      </div>
+      <div class="bg-grey-lighter h-screen font-sans">
+        <div class="container mx-auto h-full flex justify-center items-center">
+          <form
+            class="bg-white shadow-md rounded px-32 pt-24 pb-32 mb-1"
+            onSubmit={handleSubmit}
+          >
+            <div class="mb-4">
+              <input
+                class="w-60 px-2 py-2"
+                placeholder="Email"
+                id="email"
+                type="text"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div class="mb-6">
+              <input
+                class="w-60 px-2 py-2"
+                placeholder="Password"
+                id="password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div class="flex items-center justify-between mb-1">
+              <input
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                role="submit-button"
+                id="submit"
+                type="submit"
+                value="Submit"
+              />
+              <a
+                class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                href="/signup"
+                id="signup-link"
+                data-cy="signup-link"
+              >
+                Signup here
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
