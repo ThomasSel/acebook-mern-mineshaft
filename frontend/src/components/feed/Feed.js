@@ -12,7 +12,13 @@ const Feed = ({ navigate }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 401){
+          window.localStorage.removeItem("token");
+          navigate("/login")
+          }else{
+          response.json()}
+        })
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
           setToken(window.localStorage.getItem("token"));
