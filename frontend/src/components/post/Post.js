@@ -55,7 +55,7 @@ const Post = ({ post }) => {
           {/* div container for like and comment buttons below*/}
           <div class="flex w-full flex items-center">
             {/* Like button start*/}
-            <div class="m-2 flex-1 py-2 text-center">
+            <div class="flex py-2 text-center">
               <a
                 href="#"
                 class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
@@ -76,7 +76,7 @@ const Post = ({ post }) => {
             {/* Like button end */}
 
             {/* Comment button start*/}
-            <div class="flex-1 text-center">
+            <div class="flex text-center">
               {/* Add the code to comment on post */}
               <a
                 href="#"
