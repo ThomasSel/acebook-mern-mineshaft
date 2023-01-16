@@ -83,8 +83,8 @@ const SignUpForm = ({ navigate }) => {
         </h1>
       </div>
       <div className="bg-grey-lighter h-screen font-sans">
-        <div className="container mx-auto h-full flex justify-center items-center">
-          <form className="bg-white shadow-md rounded px-32 pt-24 pb-32 mb-1" onSubmit={handleSubmit}>
+        <div className="container mx-auto mt-20 flex justify-center items-center">
+          <form className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1" onSubmit={handleSubmit}>
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
               Sign up 
             </h2>
