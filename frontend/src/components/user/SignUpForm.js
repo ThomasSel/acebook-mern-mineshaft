@@ -76,51 +76,62 @@ const SignUpForm = ({ navigate }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="First Name"
-        id="first-name"
-        type="text"
-        value={firstName}
-        onChange={handleFirstNameChange}
-      />
-      <input
-        placeholder="Last Name"
-        id="last-name"
-        type="text"
-        value={lastName}
-        onChange={handleLastNameChange}
-      />
-      <input
-        placeholder="D.O.B."
-        id="user-dob"
-        type="date"
-        value={userDob}
-        onChange={handleUserDobChange}
-      />
-      <input
-        placeholder="Email"
-        id="email"
-        type="text"
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <input
-        placeholder="Password"
-        id="password"
-        type="password"
-        value={password}
-        onChange={handlePasswordChange}
-      />
-      <input
-        placeholder="Confirm Password"
-        id="confirm-password"
-        type="password"
-        value={password2}
-        onChange={handlePassword2Change}
-      />
-      <input id="submit" type="submit" value="Submit" />
-    </form>
+    <>
+      <div>
+        <h1 className="font-lobster text-blue-500 text-center text-7xl">
+          acebook
+        </h1>
+      </div>
+      <div className="bg-grey-lighter h-screen font-sans">
+        <div className="container mx-auto h-full flex justify-center items-center">
+          <form className="bg-white shadow-md rounded px-32 pt-24 pb-32 mb-1" onSubmit={handleSubmit}>
+            <input
+              placeholder="First Name"
+              id="first-name"
+              type="text"
+              value={firstName}
+              onChange={handleFirstNameChange}
+            />
+            <input
+              placeholder="Last Name"
+              id="last-name"
+              type="text"
+              value={lastName}
+              onChange={handleLastNameChange}
+            />
+            <input
+              placeholder="D.O.B."
+              id="user-dob"
+              type="date"
+              value={userDob}
+              onChange={handleUserDobChange}
+            />
+            <input
+              placeholder="Email"
+              id="email"
+              type="text"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <input
+              placeholder="Password"
+              id="password"
+              type="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <input
+              placeholder="Confirm Password"
+              id="confirm-password"
+              type="password"
+              value={password2}
+              onChange={handlePassword2Change}
+            />
+            <input id="submit" type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
+    </>
   );
 };
 
