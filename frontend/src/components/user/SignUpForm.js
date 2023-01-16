@@ -13,7 +13,7 @@ const SignUpForm = ({ navigate }) => {
     event.preventDefault();
 
     const dateNow = new Date(Date.now());
-    const dob = new Date(event.target.value);
+    const dob = new Date(userDob);
     const ms = dateNow.getTime() - dob.getTime();
     const dif = new Date(ms);
     const yearDif = Math.abs(dif.getUTCFullYear() - 1970);

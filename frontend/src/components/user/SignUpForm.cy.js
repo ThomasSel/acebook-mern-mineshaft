@@ -3,9 +3,11 @@ const navigate = () => {}
 
 describe("Signing up", () => {
   it("calls the /users endpoint", () => {
-    cy.mount(<SignUpForm navigate={navigate}/>)
 
     cy.intercept('POST', '/users', { message: "OK" }).as("signUpRequest")
+
+    cy.mount(<SignUpForm navigate={navigate}/>)
+
 
     cy.get("#first-name").type("First Name");
     cy.get("#last-name").type("Last Name");
