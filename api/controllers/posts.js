@@ -1,3 +1,4 @@
+const { post } = require("superagent");
 const Post = require("../models/post");
 const TokenGenerator = require("../models/token_generator");
 
@@ -22,6 +23,12 @@ const PostsController = {
       res.status(201).json({ message: 'OK', token: token });
     });
   },
+  Delete: (req, res) => {
+    Post.deleteMany({})
+      .then(() => TokenGenerator.jsonwebtoken(req.user_id))
+      .then((token) => res.status(200).json({ message: 'OK', token: token }))
+      .catch((error) => console.error(error));
+  }
 };
 
 module.exports = PostsController;
