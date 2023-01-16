@@ -17,6 +17,7 @@ const Post = ({ post }) => {
             <div class="flex items-center">
               <div>
                 <img
+                  id="user-photo"
                   class="inline-block h-10 w-10 rounded-full"
                   // This is the link to the image of a user on their post
                   src={`https://avatars.dicebear.com/api/open-peeps/${seed}.svg`}
@@ -24,12 +25,16 @@ const Post = ({ post }) => {
                 />
               </div>
               <div class="ml-3">
-                <p class="text-base font-medium leading-6">
-                  {/* Here we can add the user's first and last name */}
+                {/* Here we can add the user's first and last name */}
+                <p id="user-fullname" class="text-base font-medium leading-6">
                   Firstname Lastname
-                  <span class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300">
-                    {/* here we can add the user's username */}  @username - {timeAgo}
-                  </span>
+                </p>
+                {/* here we can add the user's username */}
+                <p
+                  id="username"
+                  class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
+                >
+                  @username
                 </p>
               </div>
             </div>
@@ -51,6 +56,13 @@ const Post = ({ post }) => {
           </div> */}
           {/* end of the image */}
           {/* - - - - - - - -  */}
+          <p
+            id="time-ago"
+            class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
+          >
+            {timeAgo}
+          </p>
+
           {/* div container for like and comment buttons below*/}
           <div class="flex w-full flex items-center">
             {/* Like button start*/}
