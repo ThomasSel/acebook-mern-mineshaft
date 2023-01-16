@@ -9,7 +9,7 @@ const PostsController = {
       if (err) {
         throw err;
       }
-      const token = await TokenGenerator.jsonwebtoken(req.user_id)
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
       res.status(200).json({ posts: posts, token: token });
     });
   },
@@ -24,17 +24,17 @@ const PostsController = {
         if (err) {
           throw err;
         }
-        const token = await TokenGenerator.jsonwebtoken(req.user_id)
-        res.status(201).json({ message: 'OK', posts: posts, token: token });
+        const token = await TokenGenerator.jsonwebtoken(req.user_id);
+        res.status(201).json({ message: "OK", posts: posts, token: token });
       });
     });
   },
   Delete: (req, res) => {
     Post.deleteMany({})
       .then(() => TokenGenerator.jsonwebtoken(req.user_id))
-      .then((token) => res.status(200).json({ message: 'OK', token: token }))
+      .then((token) => res.status(200).json({ message: "OK", token: token }))
       .catch((error) => console.error(error));
-  }
+  },
 };
 
 module.exports = PostsController;
