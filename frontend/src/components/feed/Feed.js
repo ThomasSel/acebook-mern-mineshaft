@@ -19,10 +19,9 @@ const Feed = ({ navigate }) => {
           setToken(window.localStorage.getItem("token"));
           setPosts(data.posts);
         });
+    } else {
+      navigate("/login");
     }
-    // else {
-    //   navigate('/login')
-    // }
   }, []);
 
   const logout = () => {

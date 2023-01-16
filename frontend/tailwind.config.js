@@ -1,10 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        lobster: ["lobster", "bold"],
+        pacifico: ["pacifico", "bold"],
+      },
+    },
   },
   plugins: [require("daisyui")],
   // daisyUI config (optional)
@@ -18,4 +21,4 @@ module.exports = {
     prefix: "",
     // darkTheme: "dark",
   },
-}
+};
