@@ -1,5 +1,5 @@
 describe("Making a post", () => {
-  beforeEach(() => {
+  before(() => {
     cy.signup("user@email.com", "12345678");
     cy.login("user@email.com", "12345678");
   });
@@ -7,7 +7,7 @@ describe("Making a post", () => {
   it("user succesfully creates a post", () => {
     let lengthOnVisit = 0;
     cy.visit("/posts");
-    if (Cypress.$('[data-cy="post"]').length > 0) {
+    if (Cypress.$('[data-cy="post"]:contains(yay)').length > 0) {
       cy.get('[data-cy="post"]')
         .contains("yay")
         .its("length")

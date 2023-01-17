@@ -10,6 +10,8 @@ const PostInputForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (newPost.trim().length === 0) return;
+
     fetch("/posts", {
       method: "post",
       headers: {
@@ -31,12 +33,17 @@ const PostInputForm = (props) => {
       <div className="input-group input-group-lg justify-center">
         <input
           type="text"
+          id="postInput"
           placeholder="Add new post"
           className="input input-bordered w-1/5"
           value={newPost}
           onChange={handleInputChange}
         />
-        <button className="btn btn-square w-20" onClick={handleSubmit}>
+        <button
+          className="btn btn-square w-20"
+          id="submitPost"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </div>

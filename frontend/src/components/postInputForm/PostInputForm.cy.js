@@ -36,4 +36,19 @@ describe("PostInputForm", () => {
       expect(setToken).to.be.calledWith("responseToken");
     });
   });
+
+  describe("Empty input", () => {
+    it("Doesn't allow for empty posts", () => {
+      cy.intercept("POST", "/posts", cy.spy().as("myRequest"));
+
+      cy.mount(<PostInputForm />);
+
+      cy.get("#submitPost").click();
+
+      cy.get("#postInput").type("     ");
+      cy.get("#submitPost").click();
+
+      cy.get("@myRequest").should("not.have.been.called");
+    });
+  });
 });
