@@ -29,12 +29,6 @@ const PostsController = {
       });
     });
   },
-  Delete: (req, res) => {
-    Post.deleteMany({})
-      .then(() => TokenGenerator.jsonwebtoken(req.user_id))
-      .then((token) => res.status(200).json({ message: "OK", token: token }))
-      .catch((error) => console.error(error));
-  },
 };
 
 module.exports = PostsController;
