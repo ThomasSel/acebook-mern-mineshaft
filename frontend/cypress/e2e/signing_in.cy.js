@@ -34,4 +34,12 @@ describe("Signing in", () => {
 
     cy.url().should("include", "/signup");
   });
+
+  it("should redirect to the login page if a token expires on the feed", () => {
+    cy.visit("/posts");
+    cy.clock();
+    cy.tick(6000000);
+    cy.visit("/posts");
+    cy.url().should("include", "/login");
+  });
 });
