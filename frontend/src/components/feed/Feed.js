@@ -17,7 +17,7 @@ const Feed = ({ navigate }) => {
           window.localStorage.removeItem("token");
           navigate("/login")
           }else{
-          response.json()}
+          return response.json()}
         })
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
