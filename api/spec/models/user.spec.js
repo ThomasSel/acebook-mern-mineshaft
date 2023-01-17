@@ -38,6 +38,9 @@ describe("User model", () => {
     const user = new User({
       email: "someone@example.com",
       password: "password",
+      firstName: "First",
+      lastName: "Last",
+      userDob: "1996-02-14"
     });
 
     user.save((err) => {
@@ -46,10 +49,12 @@ describe("User model", () => {
       User.find((err, users) => {
         expect(err).toBeNull();
 
-        expect(users[0]).toMatchObject({
-          email: "someone@example.com",
-          password: "password",
-        });
+        expect(users[0].email).toBe("someone@example.com");
+        expect(users[0].password).toBe("password");
+        expect(users[0].firstName).toBe("First");
+        expect(users[0].lastName).toBe("Last");
+        expect(users[0].userDob).toEqual(new Date("1996,02,14 GMT"));
+
         done();
       });
     });
