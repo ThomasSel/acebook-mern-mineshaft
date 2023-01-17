@@ -114,6 +114,7 @@ const SignUpForm = ({ navigate }) => {
                 value={userDob}
                 onChange={handleUserDobChange}
               />
+              <Alert userDob={userDob} />
             </div>
             <div class="mb-4">
               <input
