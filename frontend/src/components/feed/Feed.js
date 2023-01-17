@@ -13,11 +13,12 @@ const Feed = ({ navigate }) => {
         },
       })
         .then((response) => {
-          if (response.status === 401){
-          window.localStorage.removeItem("token");
-          navigate("/login")
-          }else{
-          return response.json()}
+          if (response.status === 401) {
+            window.localStorage.removeItem("token");
+            navigate("/login");
+          } else {
+            return response.json();
+          }
         })
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
@@ -36,8 +37,26 @@ const Feed = ({ navigate }) => {
 
   return (
     <>
+      <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <a
+            className="font-lobster text-white text-center text-6xl"
+            href="/posts"
+          >
+            acebook
+          </a>
+        </div>
+        <div>
+          <button
+            class="bg-blue-500 hover:bg-white text-white font-bold hover:text-blue-500 py-2 px-4 rounded-full"
+            onClick={logout}
+          >
+            Logout
+          </button>
+        </div>
+      </nav>
       <h2>Posts</h2>
-      <button onClick={logout}>Logout</button>
+      {/* <button onClick={logout}>Logout</button> */}
 
       <div id="feed" role="feed">
         {posts.map((post) => (

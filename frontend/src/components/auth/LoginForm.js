@@ -36,17 +36,25 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
-      <div>
-        <h1 className="font-lobster text-blue-500 text-center text-7xl">
-          acebook
-        </h1>
-      </div>
+      <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <a
+            className="font-lobster text-white text-center text-6xl"
+            href="/signup"
+          >
+            acebook
+          </a>
+        </div>
+      </nav>
       <div class="bg-grey-lighter h-screen font-sans">
         <div class="container mx-auto h-full flex justify-center items-center">
           <form
             class="bg-white shadow-md rounded px-32 pt-24 pb-32 mb-1"
             onSubmit={handleSubmit}
           >
+            <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
+              Login
+            </h2>
             <div class="mb-4">
               <input
                 class="w-60 px-2 py-2"

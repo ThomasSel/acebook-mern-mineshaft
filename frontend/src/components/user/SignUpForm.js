@@ -48,7 +48,7 @@ const SignUpForm = ({ navigate }) => {
     const ms = dateNow.getTime() - dob.getTime();
     const dif = new Date(ms);
     return Math.abs(dif.getUTCFullYear() - 1970);
-  }
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -76,16 +76,24 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-      <div>
-        <h1 className="font-lobster text-blue-500 text-center text-7xl">
-          acebook
-        </h1>
-      </div>
+      <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+          <a
+            className="font-lobster text-white text-center text-6xl"
+            href="/login"
+          >
+            acebook
+          </a>
+        </div>
+      </nav>
       <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto mt-20 flex justify-center items-center">
-          <form className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1" onSubmit={handleSubmit}>
+          <form
+            className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1"
+            onSubmit={handleSubmit}
+          >
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
-              Sign up 
+              Sign up
             </h2>
             <div class="mb-4">
               <input
