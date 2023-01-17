@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Alert from './Alert';
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -140,6 +141,7 @@ const SignUpForm = ({ navigate }) => {
                 value={password2}
                 onChange={handlePassword2Change}
               />
+              <Alert password={password} password2={password2} />
             </div>
             <div class="flex items-center justify-between mb-1">
               <input
