@@ -40,7 +40,7 @@ const Feed = ({ navigate }) => {
       <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <a
-            className="font-lobster text-white text-center text-6xl"
+            className="font-lobster text-white text-center hover:text-blue-900 text-6xl"
             href="/posts"
           >
             acebook
@@ -56,7 +56,6 @@ const Feed = ({ navigate }) => {
         </div>
       </nav>
       <h2>Posts</h2>
-      {/* <button onClick={logout}>Logout</button> */}
 
       <div id="feed" role="feed">
         {posts.map((post) => (

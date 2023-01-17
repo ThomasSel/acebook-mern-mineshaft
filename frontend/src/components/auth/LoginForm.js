@@ -39,7 +39,7 @@ const LogInForm = ({ navigate }) => {
       <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <a
-            className="font-lobster text-white text-center text-6xl"
+            className="font-lobster text-white text-center hover:text-blue-900 text-6xl"
             href="/signup"
             id="logo-link"
           >
@@ -50,10 +50,10 @@ const LogInForm = ({ navigate }) => {
       <div class="bg-grey-lighter h-screen font-sans">
         <div class="container mx-auto h-full flex justify-center items-center">
           <form
-            class="bg-white shadow-md rounded px-32 pt-24 pb-32 mb-1"
+            class="bg-white shadow-md rounded px-32 pt-15 pb-32 mb-1"
             onSubmit={handleSubmit}
           >
-            <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
+            <h2 className="font-lobster text-blue-500 text-center text-3xl mb-12">
               Login
             </h2>
             <div class="mb-4">
@@ -78,7 +78,7 @@ const LogInForm = ({ navigate }) => {
             </div>
             <div class="flex items-center justify-between mb-1">
               <input
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 role="submit-button"
                 id="submit"
                 type="submit"
