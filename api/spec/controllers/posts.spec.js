@@ -9,7 +9,7 @@ let token;
 
 describe("/posts", () => {
   beforeAll( async () => {
-    const user = new User({email: "test@test.com", password: "12345678"});
+    const user = new User({email: "test@test.com", password: "12345678", firstName: "First", lastName: "Last", userDob: "2002-10-10" });
     await user.save();
     token = TokenGenerator.jsonwebtoken(user.id);
   });
