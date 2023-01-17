@@ -12,7 +12,13 @@ const Feed = ({ navigate }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 401){
+          window.localStorage.removeItem("token");
+          navigate("/login")
+          }else{
+          return response.json()}
+        })
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
           setToken(window.localStorage.getItem("token"));
@@ -28,22 +34,18 @@ const Feed = ({ navigate }) => {
     navigate("/login");
   };
 
-  if (token) {
-    return (
-      <>
-        <h2>Posts</h2>
-        <button onClick={logout}>Logout</button>
+  return (
+    <>
+      <h2>Posts</h2>
+      <button onClick={logout}>Logout</button>
 
-        <div id="feed" role="feed">
-          {posts.map((post) => (
-            <Post post={post} key={post._id} />
-          ))}
-        </div>
-      </>
-    );
-  } else {
-    navigate("/signin");
-  }
+      <div id="feed" role="feed">
+        {posts.map((post) => (
+          <Post post={post} key={post._id} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default Feed;
