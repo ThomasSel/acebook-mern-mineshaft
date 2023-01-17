@@ -41,6 +41,7 @@ const LogInForm = ({ navigate }) => {
           <a
             className="font-lobster text-white text-center text-6xl"
             href="/signup"
+            id="logo-link"
           >
             acebook
           </a>

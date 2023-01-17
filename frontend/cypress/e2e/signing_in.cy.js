@@ -42,4 +42,12 @@ describe("Signing in", () => {
     cy.visit("/posts");
     cy.url().should("include", "/login");
   });
+
+  it("redirects to the signup page", () => {
+    cy.visit("/login");
+    cy.get("#logo-link").click();
+
+    cy.url().should("include", "/signup");
+  });
+
 });

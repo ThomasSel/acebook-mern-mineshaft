@@ -81,6 +81,7 @@ const SignUpForm = ({ navigate }) => {
           <a
             className="font-lobster text-white text-center text-6xl"
             href="/login"
+            id="logo-link"
           >
             acebook
           </a>
