@@ -44,7 +44,7 @@ const SinglePostElement = (props) => {
           {/* post content appears here */}
           <p class="width-auto flex-shrink text-base font-medium">
             {props.message}
-            <span class="text-blue-400">#TellBook</span>
+            <span class="text-blue-400">#mineshaft</span>
           </p>
           {/* Uncomment code below if you want to add an image */}
           {/* <div class="pr-6 pt-3 md:flex-shrink">
