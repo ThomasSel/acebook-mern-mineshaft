@@ -27,15 +27,20 @@ const PostInputForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea
-        id="postInput"
-        placeholder="Add a new post"
-        onChange={handleInputChange}
-        value={newPost}
-      ></textarea>
-      <input id="submitPost" type={"submit"} value={"submit"}></input>
-    </form>
+    <div className="form-control">
+      <div className="input-group input-group-lg justify-center">
+        <input
+          type="text"
+          placeholder="Add new post"
+          className="input input-bordered w-1/5"
+          value={newPost}
+          onChange={handleInputChange}
+        />
+        <button className="btn btn-square w-20" onClick={handleSubmit}>
+          Submit
+        </button>
+      </div>
+    </div>
   );
 };
 
