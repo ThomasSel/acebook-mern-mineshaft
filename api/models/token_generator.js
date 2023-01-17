@@ -1,5 +1,5 @@
 const JWT = require("jsonwebtoken");
-const options = { expiresIn: "1m" };
+const options = { expiresIn: "10m" };
 const secret = process.env.JWT_SECRET;
 
 class TokenGenerator {
