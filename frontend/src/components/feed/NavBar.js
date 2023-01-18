@@ -16,7 +16,7 @@ const NavBar = (props) => {
         <div className="dropdown dropdown-end">
           <label
             tabIndex={0}
-            className="btn m-1 bg-blue-500 hover:bg-white text-white font-bold hover:text-blue-500 py-2 px-4 rounded-full"
+            className=" bg-blue-500 hover:bg-white text-white font-bold hover:text-blue-500 py-3 px-4 rounded-full"
           >
             Menu
           </label>
