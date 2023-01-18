@@ -40,4 +40,19 @@ describe("CommentInputForm", () => {
       expect(updatePageData).to.be.called;
     });
   });
+
+  describe("Empty input", () => {
+    it("Doesn't allow for empty comments", () => {
+      cy.intercept("POST", "/posts/fakeId", cy.spy().as("myRequest"));
+
+      cy.mount(<CommentInputForm />);
+
+      cy.get('[data-cy="commentSubmit"]').click();
+
+      cy.get('[data-cy="commentInput"]').type("     ");
+      cy.get('[data-cy="commentSubmit"]').click();
+
+      cy.get("@myRequest").should("not.have.been.called");
+    });
+  });
 });
