@@ -22,14 +22,18 @@ const Feed = ({ navigate }) => {
           }
         })
         .then(async (data) => {
-          window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));
-          setPosts(data.posts);
+          updatePageData(data);
         });
     } else {
       navigate("/login");
     }
   }, []);
+
+  const updatePageData = (data) => {
+    window.localStorage.setItem("token", data.token);
+    setToken(window.localStorage.getItem("token"));
+    setPosts(data.posts);
+  };
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -40,10 +44,10 @@ const Feed = ({ navigate }) => {
     <>
       <h2>Posts</h2>
       <button onClick={logout}>Logout</button>
-      <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
+      <PostInputForm token={token} updatePageData={updatePageData} />
       <div id="feed" role="feed">
         {posts.map((post) => (
-          <Post post={post} key={post._id} />
+          <Post post={post} key={post._id} updatePageData={updatePageData} token={token}/>
         ))}
       </div>
     </>
