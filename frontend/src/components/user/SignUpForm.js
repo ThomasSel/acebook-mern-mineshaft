@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from "../auth/NavBar";
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -76,17 +77,8 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-      <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a
-            className="font-lobster text-white text-center hover:text-blue-900 text-6xl"
-            href="/login"
-            id="logo-link"
-          >
-            acebook
-          </a>
-        </div>
-      </nav>
+      <NavBar></NavBar>
+
       <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto mt-20 flex justify-center items-center">
           <form
