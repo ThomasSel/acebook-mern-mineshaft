@@ -47,7 +47,7 @@ const Feed = ({ navigate }) => {
       <PostInputForm token={token} updatePageData={updatePageData} />
       <div id="feed" role="feed">
         {posts.map((post) => (
-          <Post post={post} key={post._id} updatePageData={updatePageData} token={token}/>
+          <Post post={post} updatePageData={updatePageData} token={token}/>
         ))}
       </div>
     </>
