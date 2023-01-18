@@ -160,4 +160,70 @@ describe("/posts", () => {
       expect(response.body.token).toEqual(undefined);
     });
   });
+
+  describe("POST /:id, when a token is present", () => {
+    it("Adds comment to the post", async () => {
+      let post = new Post({ message: "howdy!" });
+      await post.save();
+     
+      await request(app)
+        .post(`/posts/${post._id}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ token: token, message: "a comment" });
+
+      const posts = await Post.find();
+      expect(posts[0].comments[0]).toMatchObject({
+        message: "a comment",
+      });
+    });
+
+    it("Returns a 201 status response", async () => {
+      let post = new Post({ message: "howdy!" });
+      await post.save();
+     
+      let response = await request(app)
+        .post(`/posts/${post._id}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ token: token, message: "a comment" });
+
+        expect(response.status).toEqual(201);
+    });
+
+    it("Returns a token", async () => {
+      let post = new Post({ message: "howdy!" });
+      await post.save();
+     
+      let response = await request(app)
+        .post(`/posts/${post._id}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ token: token, message: "a comment" });
+
+      expect(response.body.token).toEqual(expect.any(String));
+    });
+
+    it("Response returns updated list of posts", async () => {
+      let post = new Post({ message: "howdy!" });
+      await post.save();
+     
+      let response = await request(app)
+        .post(`/posts/${post._id}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ token: token, message: "a comment" });
+
+      expect(response.body.posts[0].comments[0].message).toEqual("a comment");
+    });
+  });
+
+  describe("POST /:id, when a token is missing", () => {
+    it("Returns a 401 status response", async () => {
+      let post = new Post({ message: "howdy!" });
+      await post.save();
+     
+      let response = await request(app)
+        .post(`/posts/${post._id}`)
+        .send({ message: "a comment" });
+
+      expect(response.status).toEqual(401);
+    });
+  })
 });

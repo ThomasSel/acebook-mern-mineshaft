@@ -31,7 +31,7 @@ const PostsController = {
   },
   AddComment: async (req, res) => {
     try {
-      const post = await Post.findById(req.body._id);
+      const post = await Post.findById(req.params.id);
       post.comments.push({ message: req.body.message });
       await post.save();
 
