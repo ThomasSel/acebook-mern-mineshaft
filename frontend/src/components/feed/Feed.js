@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
+import NavBar from "./NavBar";
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -37,24 +38,8 @@ const Feed = ({ navigate }) => {
 
   return (
     <>
-      <nav class="flex items-center justify-between flex-wrap bg-blue-500 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <a
-            className="font-lobster text-white text-center hover:text-blue-900 text-6xl"
-            href="/posts"
-          >
-            acebook
-          </a>
-        </div>
-        <div>
-          <button
-            class="bg-blue-500 hover:bg-white text-white font-bold hover:text-blue-500 py-2 px-4 rounded-full"
-            onClick={logout}
-          >
-            Logout
-          </button>
-        </div>
-      </nav>
+      <NavBar logout={logout} />
+
       <h2>Posts</h2>
 
       <div id="feed" role="feed">

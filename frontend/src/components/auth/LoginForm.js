@@ -37,7 +37,7 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar />
 
       <div class="bg-grey-lighter h-screen font-sans">
         <div class="container mx-auto h-full flex justify-center items-center">

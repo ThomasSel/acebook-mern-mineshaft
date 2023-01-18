@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from "../auth/NavBar";
+import NavBar from "./NavBar";
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -77,7 +77,7 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-      <NavBar></NavBar>
+      <NavBar />
 
       <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto mt-20 flex justify-center items-center">
