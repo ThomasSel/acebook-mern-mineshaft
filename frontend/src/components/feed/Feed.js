@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
+import PostInputForm from "../postInputForm/PostInputForm";
+import React, { useEffect, useState } from "react";
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -13,11 +14,12 @@ const Feed = ({ navigate }) => {
         },
       })
         .then((response) => {
-          if (response.status === 401){
-          window.localStorage.removeItem("token");
-          navigate("/login")
-          }else{
-          return response.json()}
+          if (response.status === 401) {
+            window.localStorage.removeItem("token");
+            navigate("/login");
+          } else {
+            return response.json();
+          }
         })
         .then(async (data) => {
           window.localStorage.setItem("token", data.token);
@@ -38,6 +40,8 @@ const Feed = ({ navigate }) => {
     <>
       <h2>Posts</h2>
       <button onClick={logout}>Logout</button>
+
+      <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
 
       <div id="feed" role="feed">
         {posts.map((post) => (
