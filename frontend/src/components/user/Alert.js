@@ -1,7 +1,7 @@
 const Alert = (props) => {
 
   if(props.password !== props.password2) {
-    return <h1 id="mismatch" class="text-red-500 text-left text-0.5xl">passwords do not match</h1>
+    return <h1 data-cy="alert" class="text-red-500 text-left text-0.5xl">passwords do not match</h1>
   } 
 
   const age = calculateAge(props.userDob);
