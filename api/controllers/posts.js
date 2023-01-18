@@ -11,7 +11,7 @@ const PostsController = {
       }
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
       res.status(200).json({ posts: posts, token: token });
-    });
+    }).sort({createdAt: -1});
   },
   Create: (req, res) => {
     const post = new Post(req.body);
@@ -26,7 +26,7 @@ const PostsController = {
         }
         const token = await TokenGenerator.jsonwebtoken(req.user_id);
         res.status(201).json({ message: "OK", posts: posts, token: token });
-      });
+      }).sort({createdAt: -1});
     });
   },
 };
