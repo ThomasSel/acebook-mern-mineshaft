@@ -1,5 +1,6 @@
 import React from "react";
-import SinglePostElement from "./SinglePostElement"
+import SinglePostElement from "./SinglePostElement";
+import Comment from "../comment/Comment";
 
 const Post = ({ post }) => {
   return (
@@ -9,6 +10,9 @@ const Post = ({ post }) => {
         message={post.message}
         createdAt={post.createdAt}
       />
+      {post.comments.map((comment) => (
+        <Comment comment={comment} key={comment._id} />
+      ))}
     </>
   );
 };

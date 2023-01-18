@@ -8,7 +8,8 @@ describe("Post", () => {
           _id: 1,
           message: "Hello, world",
           createdAt: new Date(),
-          updatedAt: new Date()
+          updatedAt: new Date(),
+          comments: [],
         }}
       />
     );
