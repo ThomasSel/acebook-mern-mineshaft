@@ -1,11 +1,16 @@
 import moment from "moment";
+import Like from '../like/Like'
 
 const SinglePostElement = (props) => {
+  // const postId = props.match.params.postId
   // seed is the random seed to generate random avatars
   const seed = Math.round(Math.random() * 100);
   // timeAgo uses momentjs to generate a time from now string e.g "4 minutes ago"
   const timeAgo = moment(new Date(props.createdAt)).fromNow();
 
+  // const postVariable = {
+  //   postId: postId
+  // }
   return (
     <>
       {/* div container for the whole post */}
@@ -65,24 +70,8 @@ const SinglePostElement = (props) => {
           {/* div container for like and comment buttons below*/}
           <div class="flex w-full flex items-center">
             {/* Like button start*/}
-            <div id="like-button" class="flex py-2 text-center">
-              <a
-                href="#"
-                class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
-              >
-                <svg
-                  class="h-7 w-6 text-center"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-              </a>
-            </div>
+
+              <Like/>
             {/* Like button end */}
 
             {/* Comment button start*/}
