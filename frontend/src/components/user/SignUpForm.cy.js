@@ -1,4 +1,5 @@
 import SignUpForm from "./SignUpForm";
+import Alert from "./Alert"
 const navigate = () => {};
 
 describe("Signing up", () => {
