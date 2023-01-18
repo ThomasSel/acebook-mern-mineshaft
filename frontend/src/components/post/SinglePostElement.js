@@ -9,27 +9,27 @@ const SinglePostElement = (props) => {
   return (
     <>
       {/* div container for user photo, full name, username, time of post */}
-      <div class="flex flex-shrink-0 p-4 pb-0">
-        <a href="#" class="group block flex-shrink-0">
-          <div class="flex items-center">
+      <div className="flex flex-shrink-0 p-4 pb-0">
+        <a href="#" className="group block flex-shrink-0">
+          <div className="flex items-center">
             <div>
               <img
                 id="user-photo"
-                class="inline-block h-10 w-10 rounded-full"
+                className="inline-block h-10 w-10 rounded-full"
                 // This is the link to the image of a user on their post
                 src={`https://avatars.dicebear.com/api/open-peeps/${seed}.svg`}
                 alt=""
               />
             </div>
-            <div class="ml-3">
+            <div className="ml-3">
               {/* Here we can add the user's first and last name */}
-              <p id="user-fullname" class="text-base font-medium leading-6">
+              <p id="user-fullname" className="text-base font-medium leading-6">
                 Firstname Lastname
               </p>
               {/* Here we can add the user's username */}
               <p
                 id="username"
-                class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
+                className="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
               >
                 @username
               </p>
@@ -38,16 +38,16 @@ const SinglePostElement = (props) => {
         </a>
       </div>
 
-      <div class="pl-16">
+      <div className="pl-16">
         {/* post content appears here */}
-        <p class="width-auto flex-shrink text-base font-medium">
+        <p className="width-auto flex-shrink text-base font-medium">
           {props.message}
-          <span class="text-blue-400">#mineshaft</span>
+          <span className="text-blue-400">#mineshaft</span>
         </p>
         {/* Uncomment code below if you want to add an image */}
-        {/* <div class="pr-6 pt-3 md:flex-shrink">
+        {/* <div className="pr-6 pt-3 md:flex-shrink">
         <img
-          class="h-64 w-full rounded-lg"
+          className="h-64 w-full rounded-lg"
           src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg"
         />
       </div> */}
@@ -55,21 +55,21 @@ const SinglePostElement = (props) => {
         {/* - - - - - - - -  */}
         <p
           id="time-ago"
-          class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
+          className="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
         >
           {timeAgo}
         </p>
 
         {/* div container for like and comment buttons below*/}
-        <div class="flex w-full flex items-center">
+        <div className="flex w-full flex items-center">
           {/* Like button start*/}
-          <div id="like-button" class="flex py-2 text-center">
+          <div id="like-button" className="flex py-2 text-center">
             <a
               href="#"
-              class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
+              className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
             >
               <svg
-                class="h-7 w-6 text-center"
+                className="h-7 w-6 text-center"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -84,14 +84,14 @@ const SinglePostElement = (props) => {
           {/* Like button end */}
 
           {/* Comment button start*/}
-          <div id="comment-button" class="flex text-center">
+          <div id="comment-button" className="flex text-center">
             {/* Add the code to comment on post */}
             <a
               href="#"
-              class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
+              className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
             >
               <svg
-                class="h-6 w-6 text-center"
+                className="h-6 w-6 text-center"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"

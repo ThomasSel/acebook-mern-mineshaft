@@ -30,6 +30,7 @@ const CommentInputForm = (props) => {
     <div className="container mx-auto max-w-lg pb-12">
       <div className="width-auto flex p-4 pb-0">
         <textarea
+          data-cy="commentInput"
           type="text"
           id="postInput"
           placeholder="Add new post"
@@ -41,7 +42,12 @@ const CommentInputForm = (props) => {
         <div></div>
       </div>
       <div className="flex flex-shrink justify-end p-4">
-        <button className="btn btn-sm" id="submitComment" onClick={handleSubmit}>
+        <button
+          data-cy="commentSubmit"
+          className="btn btn-sm"
+          id="submitComment"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </div>

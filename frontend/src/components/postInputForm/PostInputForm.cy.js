@@ -2,8 +2,7 @@ import PostInputForm from "./PostInputForm";
 
 describe("PostInputForm", () => {
   it("Sends post request on user post submition", () => {
-    const setPosts = cy.stub();
-    const setToken = cy.stub();
+    const updatePageData = cy.stub();
 
     // mock response on post requests sent to '/posts'
     cy.intercept("POST", "/posts", {
@@ -14,11 +13,7 @@ describe("PostInputForm", () => {
 
     // pointing to where component runs, loading it on fake web page
     cy.mount(
-      <PostInputForm
-        token={"fakeToken"}
-        setToken={setToken}
-        setPosts={setPosts}
-      />
+      <PostInputForm token={"fakeToken"} updatePageData={updatePageData} />
     );
 
     cy.get("#postInput").type("some post");
@@ -32,8 +27,7 @@ describe("PostInputForm", () => {
 
       expect(interception.response.body.token).to.eq("responseToken");
 
-      expect(setPosts).to.be.calledWith([{ _id: 1, message: "some post" }]);
-      expect(setToken).to.be.calledWith("responseToken");
+      expect(updatePageData).to.be.called;
     });
   });
 

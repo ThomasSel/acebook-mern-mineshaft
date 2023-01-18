@@ -11,6 +11,8 @@ describe("Post", () => {
           updatedAt: new Date(),
           comments: [],
         }}
+        token={"fakeToken"}
+        updatePageData={() => {}}
       />
     );
   });
