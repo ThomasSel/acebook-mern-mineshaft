@@ -7,7 +7,7 @@ const Alert = (props) => {
   const age = calculateAge(props.userDob);
 
   if (age < 14){
-    return <h1 class="text-red-500 text-left text-0.5xl" > user must be over 14<br />years of age to sign up  </h1>
+    return <h1 data-cy="alert-dob" class="text-red-500 text-left text-0.5xl" > user must be over 14<br />years of age to sign up  </h1>
   }
 }
 
