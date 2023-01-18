@@ -4,9 +4,13 @@ describe("User profile", () => {
   });
 
   it("logs the user out", () => {
-    cy.visit("/profile");
+    cy.visit("/login");
+    cy.get("#email").type("someone@example.com");
+    cy.get("#password").type("password");
+    cy.get("#submit").click();
 
-    cy.get("#logout-button").click();
+    cy.visit("/profile");
+    cy.get("#profile-logout-button").click();
     cy.url().should("include", "/login");
   });
 
