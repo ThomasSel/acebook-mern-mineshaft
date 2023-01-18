@@ -35,7 +35,7 @@ const PostsController = {
       post.comments.push({ message: req.body.message });
       await post.save();
 
-      const updatedPosts = await Post.find();
+      const updatedPosts = await Post.find().sort({ createdAt: -1 });
       const token = await TokenGenerator.jsonwebtoken(req.user_id);
       res
         .status(201)
