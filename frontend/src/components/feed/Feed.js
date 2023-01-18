@@ -40,9 +40,7 @@ const Feed = ({ navigate }) => {
     <>
       <h2>Posts</h2>
       <button onClick={logout}>Logout</button>
-
       <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
-
       <div id="feed" role="feed">
         {posts.map((post) => (
           <Post post={post} key={post._id} />

@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 
-const commentSchema = new mongoose.Schema({ message: {type: String, required: true }})
-
-const PostSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
   message: { type: String, required: true },
-  comments: [commentSchema]
 });
+
+const PostSchema = new mongoose.Schema(
+  {
+    message: { type: String, required: true },
+    comments: [commentSchema],
+  },
+  { timestamps: true }
+);
 
 const Post = mongoose.model("Post", PostSchema);
 
