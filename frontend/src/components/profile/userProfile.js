@@ -6,7 +6,6 @@ const UserProfile = ({ navigate }) => {
 
   useEffect(() => {
     if (token) {
-      navigate("/profile");
     } else {
       navigate("/login");
     }

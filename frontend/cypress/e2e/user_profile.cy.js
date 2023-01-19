@@ -1,6 +1,6 @@
 describe("User profile", () => {
   before(() => {
-    cy.signup("user@email.com", "12345678");
+    cy.signup("someone@example.com", "password");
   });
 
   it("logs the user out", () => {
