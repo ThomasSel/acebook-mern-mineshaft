@@ -23,6 +23,9 @@ const Alert = (props) => {
     }
 
     if("email" in props && props.email.trim().length === 0){
+      return <h1 data-cy="alert-no-email" class="text-red-500 text-left text-0.5xl">must enter an email</h1>
+    } 
+    else if("email" in props && !props.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
       return <h1 data-cy="alert-email" class="text-red-500 text-left text-0.5xl">must enter a valid email</h1>
     }
 

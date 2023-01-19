@@ -30,4 +30,16 @@ describe("Alert rendered on client", () => {
    
     cy.get('[data-cy="alert-lastname"]').should('contain.text', "must enter a last name");
   });
+
+  it("no email was entered", () => {
+    cy.mount(<Alert email={""} render={true}/>);
+   
+    cy.get('[data-cy="alert-no-email"]').should('contain.text', "must enter an email");
+  });
+
+  it("invalid email was entered", () => {
+    cy.mount(<Alert email={"testemail.com"} render={true}/>);
+   
+    cy.get('[data-cy="alert-email"]').should('contain.text', "must enter a valid email");
+  });
 });
