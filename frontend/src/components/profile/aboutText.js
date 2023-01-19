@@ -1,27 +1,9 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
-import AboutText from "./aboutText";
+import UserProfile from "./userProfile";
 
-const UserProfile = ({ navigate }) => {
-  const [token] = useState(window.localStorage.getItem("token"));
-
-  useEffect(() => {
-    if (token) {
-    } else {
-      navigate("/login");
-    }
-  }, []);
-
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    navigate("/login");
-  };
-
+const AboutText = (props) => {
   return (
     <>
-      <NavBar logout={logout} />
-      <AboutText />
-      {/* <div className="bg-grey-lighter h-screen font-sans">
+      <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto h-full flex justify-center items-center">
           <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-12">
@@ -51,9 +33,9 @@ const UserProfile = ({ navigate }) => {
             </div>
           </form>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };
 
-export default UserProfile;
+export default AboutText;
