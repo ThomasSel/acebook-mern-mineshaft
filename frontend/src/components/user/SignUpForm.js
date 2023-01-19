@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Alert from '../alert/Alert';
+import NavBar from "./NavBar";
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const SignUpForm = ({ navigate }) => {
     const ms = dateNow.getTime() - dob.getTime();
     const dif = new Date(ms);
     return Math.abs(dif.getUTCFullYear() - 1970);
-  }
+  };
 
   const handleChange = (setFunction) => {
    return (event) => {
@@ -57,16 +58,16 @@ const SignUpForm = ({ navigate }) => {
 
   return (
     <>
-      <div>
-        <h1 className="font-lobster text-blue-500 text-center text-7xl">
-          acebook
-        </h1>
-      </div>
+      <NavBar />
+
       <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto mt-20 flex justify-center items-center">
-          <form className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1" onSubmit={handleSubmit}>
+          <form
+            className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1"
+            onSubmit={handleSubmit}
+          >
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
-              Sign up 
+              Sign up
             </h2>
             <div className="mb-4">
               <input
@@ -118,7 +119,7 @@ const SignUpForm = ({ navigate }) => {
               />
               <Alert render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Confirm Password"
                 id="confirm-password"
@@ -130,7 +131,7 @@ const SignUpForm = ({ navigate }) => {
             </div>
             <div className="flex items-center justify-between mb-1">
               <input
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 role="submit-button"
                 id="submit"
                 type="submit"

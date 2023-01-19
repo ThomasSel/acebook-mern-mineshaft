@@ -121,4 +121,11 @@ describe("Signing up", () => {
     cy.get('[data-cy="alert-dob"]').should('contain.text', "user must be over 14years of age to sign up");
   });
 
+  it("redirects to the login page", () => {
+    cy.visit("/signup");
+    cy.get("#logo-link").click();
+
+    cy.url().should("include", "/login");
+  });
+
 });

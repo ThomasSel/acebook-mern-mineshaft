@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
 import Post from "../post/Post";
+import NavBar from "./NavBar";
+import PostInputForm from "../postInputForm/PostInputForm";
+import React, { useEffect, useState } from "react";
 
 const Feed = ({ navigate }) => {
   const [posts, setPosts] = useState([]);
@@ -12,38 +14,46 @@ const Feed = ({ navigate }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (response.status === 401) {
+            window.localStorage.removeItem("token");
+            navigate("/login");
+          } else {
+            return response.json();
+          }
+        })
         .then(async (data) => {
-          window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));
-          setPosts(data.posts);
+          updatePageData(data);
         });
     } else {
       navigate("/login");
     }
   }, []);
 
+  const updatePageData = (data) => {
+    window.localStorage.setItem("token", data.token);
+    setToken(window.localStorage.getItem("token"));
+    setPosts(data.posts);
+  };
+
   const logout = () => {
     window.localStorage.removeItem("token");
     navigate("/login");
   };
 
-  if (token) {
-    return (
-      <>
-        <h2>Posts</h2>
-        <button onClick={logout}>Logout</button>
+  return (
+    <>
+      <NavBar logout={logout} />
 
-        <div id="feed" role="feed">
-          {posts.map((post) => (
-            <Post post={post} key={post._id} />
-          ))}
-        </div>
-      </>
-    );
-  } else {
-    navigate("/signin");
-  }
+      <h2>Posts</h2>
+      <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
+      <div id="feed" role="feed">
+        {posts.map((post) => (
+          <Post post={post} updatePageData={updatePageData} token={token} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default Feed;
