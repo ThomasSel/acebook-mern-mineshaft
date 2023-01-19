@@ -84,7 +84,12 @@ const SinglePostElement = (props) => {
           {/* Like button end */}
 
           {/* Comment button start*/}
-          <div id="comment-button" className="flex text-center">
+          <div
+            id="comment-button"
+            className="flex text-center"
+            data-cy="commentButton"
+            onClick={props.toggleComments}
+          >
             {/* Add the code to comment on post */}
             <a
               href="#"

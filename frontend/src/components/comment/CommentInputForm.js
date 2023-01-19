@@ -27,13 +27,13 @@ const CommentInputForm = (props) => {
   };
 
   return (
-    <div className="container mx-auto max-w-lg pb-12">
+    <div className="container mx-auto max-w-lg">
       <div className="width-auto flex p-4 pb-0">
         <textarea
           data-cy="commentInput"
           type="text"
           id="postInput"
-          placeholder="Add new post"
+          placeholder="Commment on this post"
           className="textarea-bordered textarea w-full"
           value={newComment}
           onChange={handleInputChange}

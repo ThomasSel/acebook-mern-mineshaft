@@ -1,8 +1,10 @@
 const Comment = (props) => {
   return (
-    <>
-      <p data-cy="comment">{props.comment.message}</p>
-    </>
+    <div className="h-12 border-b-2 flex items-center">
+      <p data-cy="comment" className="pl-28">
+        {props.comment.message}
+      </p>
+    </div>
   );
 };
 
