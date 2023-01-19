@@ -71,7 +71,7 @@ const SinglePostElement = (props) => {
           <div class="flex w-full flex items-center">
             {/* Like button start*/}
 
-              <Like/>
+              <Like postId={props.id}/>
             {/* Like button end */}
 
             {/* Comment button start*/}
