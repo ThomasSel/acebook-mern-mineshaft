@@ -8,9 +8,9 @@ const Alert = (props) => {
       return <h1 data-cy="alert-password" class="text-red-500 text-left text-0.5xl" >must enter valid password</h1>
     }
 
-    const age = calculateAge(props.userDob);
+    // const age = calculateAge(props.userDob);
 
-    if (age < 14){
+    if (props.age < 14){
       return <h1 data-cy="alert-dob" class="text-red-500 text-left text-0.5xl" >user must be over 14<br />years of age to sign up  </h1>
     }
 
@@ -32,12 +32,12 @@ const Alert = (props) => {
   }
 }
 
-const calculateAge = (userDob) => {
-  const dateNow = new Date(Date.now());
-  const dob = new Date(userDob);
-  const ms = dateNow.getTime() - dob.getTime();
-  const dif = new Date(ms);
-  return Math.abs(dif.getUTCFullYear() - 1970);
-}
+// const calculateAge = (userDob) => {
+//   const dateNow = new Date(Date.now());
+//   const dob = new Date(userDob);
+//   const ms = dateNow.getTime() - dob.getTime();
+//   const dif = new Date(ms);
+//   return Math.abs(dif.getUTCFullYear() - 1970);
+// }
 
 export default Alert;

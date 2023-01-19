@@ -48,6 +48,19 @@ describe("Signing up", () => {
     cy.url().should("include", "/signup");
   });
 
+  it("with invalid email, redirects to '/signup'", () => {
+    cy.visit("/signup");
+    cy.get("#email").type("someoneexample.com");
+    cy.get("#password").type("password");
+    cy.get("#confirm-password").type("password");
+    cy.get("#first-name").type("First");
+    cy.get("#last-name").type("Last");
+    cy.get("#user-dob").type("2000-10-10");
+    cy.get("#submit").click();
+
+    cy.url().should("include", "/signup");
+  });
+
   it("with missing first name, redirects to '/signup'", () => {
     cy.visit("/signup");
     cy.get("#email").type("someone@example.com");
