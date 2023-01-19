@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Alert from './Alert';
+import Alert from '../alert/Alert';
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -9,12 +9,16 @@ const SignUpForm = ({ navigate }) => {
   const [lastName, setLastName] = useState("");
   const [userDob, setUserDob] = useState("");
 
+  const [renderAlert, setRenderAlert] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    setRenderAlert(true);
+
     const age = calculateAge(userDob);
 
-    if (password === password2 && age >= 14) {
+    if (password.length >= 6 && password === password2 && age >= 14 && firstName.trim().length !== 0 && lastName.trim().length !== 0) {
       fetch("/users", {
         method: "post",
         headers: {
@@ -34,13 +38,7 @@ const SignUpForm = ({ navigate }) => {
           navigate("/signup");
         }
       });
-    } else {
-      if (password !== password2) {
-        window.alert("Passwords do not match!");
-      } else {
-        window.alert("User must be 14 years of age or older!");
-      }
-    }
+    };
   };
 
   const calculateAge = (userDob) => {
@@ -51,29 +49,12 @@ const SignUpForm = ({ navigate }) => {
     return Math.abs(dif.getUTCFullYear() - 1970);
   }
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handleUserDobChange = (event) => {
-    setUserDob(event.target.value);
-  };
-
-  const handlePassword2Change = (event) => {
-    setPassword2(event.target.value);
-  };
+  const handleChange = (setFunction) => {
+   return (event) => {
+      setFunction(event.target.value);
+      setRenderAlert(false);
+    };
+  }
 
   return (
     <>
@@ -88,51 +69,55 @@ const SignUpForm = ({ navigate }) => {
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
               Sign up 
             </h2>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="First Name"
                 id="first-name"
                 type="text"
                 value={firstName}
-                onChange={handleFirstNameChange}
+                onChange={handleChange(setFirstName)}
               />
+              <Alert firstName={firstName} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Last Name"
                 id="last-name"
                 type="text"
                 value={lastName}
-                onChange={handleLastNameChange}
+                onChange={handleChange(setLastName)}
               />
+              <Alert lastName={lastName} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="D.O.B."
                 id="user-dob"
                 type="date"
                 value={userDob}
-                onChange={handleUserDobChange}
+                onChange={handleChange(setUserDob)}
               />
-              <Alert userDob={userDob} />
+              <Alert userDob={userDob} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Email"
                 id="email"
                 type="text"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={handleChange(setEmail)}
               />
+              <Alert email={email} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Password"
                 id="password"
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={handleChange(setPassword)}
               />
+              <Alert render={renderAlert} />
             </div>
             <div class="mb-4">
               <input
@@ -140,20 +125,20 @@ const SignUpForm = ({ navigate }) => {
                 id="confirm-password"
                 type="password"
                 value={password2}
-                onChange={handlePassword2Change}
+                onChange={handleChange(setPassword2)}
               />
-              <Alert password={password} password2={password2} />
+              <Alert password = {password} password2={password2} render={renderAlert} />
             </div>
-            <div class="flex items-center justify-between mb-1">
+            <div className="flex items-center justify-between mb-1">
               <input
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 role="submit-button"
                 id="submit"
                 type="submit"
                 value="Submit"
               />
               <a
-                class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="/login"
                 id="login-link"
                 data-cy="login-link"
