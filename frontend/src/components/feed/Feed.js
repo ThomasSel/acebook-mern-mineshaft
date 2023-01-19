@@ -42,12 +42,8 @@ const Feed = ({ navigate }) => {
       <NavBar logout={logout} />
 
       <h2>Posts</h2>
-<<<<<<< HEAD
 
-=======
-      <button onClick={logout}>Logout</button>
       <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
->>>>>>> main
       <div id="feed" role="feed">
         {posts.map((post) => (
           <Post post={post} key={post._id} />
