@@ -98,4 +98,11 @@ describe("Signing up", () => {
     cy.url().should("include", "/signup");
   });
 
+  it("redirects to the login page", () => {
+    cy.visit("/signup");
+    cy.get("#logo-link").click();
+
+    cy.url().should("include", "/login");
+  });
+
 });

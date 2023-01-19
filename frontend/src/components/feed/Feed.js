@@ -1,4 +1,5 @@
 import Post from "../post/Post";
+import NavBar from "./NavBar";
 import PostInputForm from "../postInputForm/PostInputForm";
 import React, { useEffect, useState } from "react";
 
@@ -42,12 +43,13 @@ const Feed = ({ navigate }) => {
 
   return (
     <>
+      <NavBar logout={logout} />
+
       <h2>Posts</h2>
-      <button onClick={logout}>Logout</button>
-      <PostInputForm token={token} updatePageData={updatePageData} />
+      <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
       <div id="feed" role="feed">
         {posts.map((post) => (
-          <Post post={post} updatePageData={updatePageData} token={token}/>
+          <Post post={post} updatePageData={updatePageData} token={token} />
         ))}
       </div>
     </>
