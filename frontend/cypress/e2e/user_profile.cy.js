@@ -1,4 +1,4 @@
-describe("User profile", () => {
+describe("About page", () => {
   before(() => {
     cy.signup("someone@example.com", "password");
   });
@@ -9,8 +9,8 @@ describe("User profile", () => {
     cy.get("#password").type("password");
     cy.get("#submit").click();
 
-    cy.visit("/profile");
-    cy.get("#profile-logout-button").click();
+    cy.visit("/about");
+    cy.get("#about-logout-button").click();
     cy.url().should("include", "/login");
   });
 
@@ -20,7 +20,7 @@ describe("User profile", () => {
     cy.get("#password").type("password");
     cy.get("#submit").click();
 
-    cy.visit("/profile");
+    cy.visit("/about");
     cy.get("#feed-button").click();
     cy.url().should("include", "/posts");
   });
@@ -31,7 +31,7 @@ describe("User profile", () => {
     cy.get("#password").type("password");
     cy.get("#submit").click();
 
-    cy.visit("/profile");
+    cy.visit("/about");
     cy.get("#logo-link").click();
     cy.url().should("include", "/posts");
   });

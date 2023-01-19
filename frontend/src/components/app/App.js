@@ -13,7 +13,7 @@ const App = () => {
       <Route path="/login" element={<LoginForm navigate={useNavigate()} />} />
       <Route path="/" element={<Navigate replace to="/posts" />} />
       <Route path="/signup" element={<SignUpForm navigate={useNavigate()} />} />
-      <Route path="/profile" element ={<UserProfile navigate={useNavigate()} />} />
+      <Route path="/about" element ={<UserProfile navigate={useNavigate()} />} />
     </Routes>
   );
 };

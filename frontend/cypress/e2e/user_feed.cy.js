@@ -1,6 +1,6 @@
 describe("user feed", () => {
   before(() => {
-    cy.signup("user@email.com", "12345678");
+    cy.signup("someone@example.com", "password");
   });
 
   it("logs the user out", () => {
@@ -14,15 +14,15 @@ describe("user feed", () => {
     cy.url().should("include", "/login");
   });
 
-  it("redirects to the profile page", () => {
+  it("redirects to the about page", () => {
     cy.visit("/login");
     cy.get("#email").type("someone@example.com");
     cy.get("#password").type("password");
     cy.get("#submit").click();
 
     cy.visit("/posts");
-    cy.get("#profile-button").click();
-    cy.url().should("include", "/profile");
+    cy.get("#about-button").click();
+    cy.url().should("include", "/about");
   });
 
   it("logo link refreshes the feed page", () => {

@@ -32,7 +32,7 @@ const NavBar = (props) => {
                 </a>
               </li>
               <li className="visible">
-                <a onClick={props.logout} id="profile-logout-button">
+                <a onClick={props.logout} id="about-logout-button">
                   Logout
                 </a>
               </li>
