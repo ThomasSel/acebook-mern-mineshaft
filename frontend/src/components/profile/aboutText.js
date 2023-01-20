@@ -29,7 +29,10 @@ const AboutText = (props) => {
               <p>and what time you go to sleep!</p>
               <p>Sleep tight xoxo</p>
               <br></br>
-              <p>- The team at Mineshaft.</p>
+              <p>
+                - The team at{" "}
+                <span className="font-lobster text-blue-500">Mineshaft</span>.
+              </p>
             </div>
             <div className="text-center bt-10">
               <p>Change policy </p>
