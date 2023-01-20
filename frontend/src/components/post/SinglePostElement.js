@@ -1,8 +1,8 @@
 import moment from "moment";
 
 const SinglePostElement = (props) => {
-  // seed is the random seed to generate random avatars
-  const seed = Math.round(Math.random() * 100);
+  // // seed is the random seed to generate random avatars
+  // const seed = Math.round(Math.random() * 100);
   // timeAgo uses momentjs to generate a time from now string e.g "4 minutes ago"
   const timeAgo = moment(new Date(props.createdAt)).fromNow();
 
@@ -19,14 +19,14 @@ const SinglePostElement = (props) => {
                   id="user-photo"
                   class="inline-block h-10 w-10 rounded-full"
                   // This is the link to the image of a user on their post
-                  src={`https://avatars.dicebear.com/api/open-peeps/${seed}.svg`}
+                  src={props.photoUrl}
                   alt=""
                 />
               </div>
               <div class="ml-3">
                 {/* Here we can add the user's first and last name */}
                 <p id="user-fullname" class="text-base font-medium leading-6">
-                  Firstname Lastname
+                  {props.firstName} {props.lastName}
                 </p>
                 {/* Here we can add the user's username */}
                 <p
