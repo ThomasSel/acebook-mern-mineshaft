@@ -48,4 +48,10 @@ describe("Alert rendered on client", () => {
    
     cy.get('[data-cy="alert-email"]').should('contain.text', "must enter a valid email");
   });
+
+  it("Login details are invalid (email or password)", () => {
+    cy.mount(<Alert renderAlert={true}/>)
+
+    cy.get('[data-cy="alert-login"]').should('contain.text', "incorrect user details");
+  });
 });
