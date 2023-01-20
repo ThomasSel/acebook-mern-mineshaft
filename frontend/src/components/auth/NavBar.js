@@ -8,7 +8,7 @@ const NavBar = (props) => {
             href="/signup"
             id="logo-link"
           >
-            acebook
+            Acebook
           </a>
         </div>
       </nav>
