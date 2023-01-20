@@ -30,12 +30,12 @@ const SinglePostElement = (props) => {
                   {props.firstName} {props.lastName}
                 </p>
                 {/* Here we can add the user's username */}
-                <p
+                {/* <p
                   id="username"
                   class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
                 >
                   @username
-                </p>
+                </p> */}
               </div>
             </div>
           </a>
@@ -78,10 +78,7 @@ const SinglePostElement = (props) => {
               onClick={props.toggleComments}
             >
               {/* Add the code to comment on post */}
-              <a
-                href="#"
-                className="flex items-center w-12 px-3 py-2 mt-1 text-base font-medium leading-6 text-gray-500 rounded-full group hover:bg-blue-800 hover:text-blue-300"
-              >
+              <a className="flex items-center w-12 px-3 py-2 mt-1 text-base font-medium leading-6 text-gray-500 rounded-full group hover:bg-blue-800 hover:text-blue-300">
                 <svg
                   className="w-6 h-6 text-center"
                   fill="none"
