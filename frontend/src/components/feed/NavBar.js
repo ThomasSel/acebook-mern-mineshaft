@@ -10,7 +10,7 @@ const NavBar = (props) => {
             href="/posts"
             id="logo-link"
           >
-            acebook
+            Mineshaft
           </a>
         </div>
         <div className="dropdown dropdown-end">
