@@ -1,4 +1,5 @@
 import Post from "../post/Post";
+import NavBar from "./NavBar";
 import PostInputForm from "../postInputForm/PostInputForm";
 import React, { useEffect, useState } from "react";
 
@@ -22,14 +23,18 @@ const Feed = ({ navigate }) => {
           }
         })
         .then(async (data) => {
-          window.localStorage.setItem("token", data.token);
-          setToken(window.localStorage.getItem("token"));
-          setPosts(data.posts);
+          updatePageData(data);
         });
     } else {
       navigate("/login");
     }
   }, []);
+
+  const updatePageData = (data) => {
+    window.localStorage.setItem("token", data.token);
+    setToken(window.localStorage.getItem("token"));
+    setPosts(data.posts);
+  };
 
   const logout = () => {
     window.localStorage.removeItem("token");
@@ -38,12 +43,13 @@ const Feed = ({ navigate }) => {
 
   return (
     <>
+      <NavBar logout={logout} />
+
       <h2>Posts</h2>
-      <button onClick={logout}>Logout</button>
-      <PostInputForm token={token} setToken={setToken} setPosts={setPosts} />
+      <PostInputForm token={token} updatePageData={updatePageData} />
       <div id="feed" role="feed">
         {posts.map((post) => (
-          <Post post={post} key={post._id} />
+          <Post post={post} updatePageData={updatePageData} token={token} />
         ))}
       </div>
     </>
