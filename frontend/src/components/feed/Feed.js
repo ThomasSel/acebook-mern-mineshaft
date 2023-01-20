@@ -45,7 +45,10 @@ const Feed = ({ navigate }) => {
     <>
       <NavBar logout={logout} />
 
-      <h2>Posts</h2>
+      <h2 className="font-lobster text-blue-500 text-center text-3xl mb-3 mt-40">
+        Posts
+      </h2>
+
       <PostInputForm token={token} updatePageData={updatePageData} />
       <div id="feed" role="feed">
         {posts.map((post) => (

@@ -41,8 +41,12 @@ const PostInputForm = (props) => {
 
         <div></div>
       </div>
-      <div className="flex flex-shrink justify-end p-4">
-        <button className="btn btn-sm" id="submitPost" onClick={handleSubmit}>
+      <div class="flex flex-shrink justify-end p-4">
+        <button
+          class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+          id="submitPost"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </div>
