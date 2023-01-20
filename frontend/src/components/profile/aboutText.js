@@ -11,7 +11,7 @@ const AboutText = (props) => {
             </h2>
             <div className="text-center">
               <p>
-                Acebook stores your information on every app and extention you
+                Mineshaft stores your information on every app and extention you
                 use.
               </p>
               <p>
@@ -35,7 +35,7 @@ const AboutText = (props) => {
               <p>Change policy </p>
               <a
                 className="center font-bold text-sm text-blue-500 hover:text-blue-800"
-                href="https://www.youtube.com/"
+                href="https://www.change.org/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
