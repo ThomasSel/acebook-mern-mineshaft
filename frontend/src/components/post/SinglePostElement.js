@@ -1,8 +1,9 @@
 import moment from "moment";
+import Like from "../like/Like";
 
 const SinglePostElement = (props) => {
-  // // seed is the random seed to generate random avatars
-  // const seed = Math.round(Math.random() * 100);
+  // seed is the random seed to generate random avatars
+  const seed = Math.round(Math.random() * 100);
   // timeAgo uses momentjs to generate a time from now string e.g "4 minutes ago"
   const timeAgo = moment(new Date(props.createdAt)).fromNow();
 
@@ -40,24 +41,24 @@ const SinglePostElement = (props) => {
           </a>
         </div>
 
-        <div class="pl-16">
+        <div className="pl-16">
           {/* post content appears here */}
-          <p class="width-auto flex-shrink text-base font-medium">
+          <p className="flex-shrink text-base font-medium width-auto">
             {props.message}
-            <span class="text-blue-400">#mineshaft</span>
+            <span className="text-blue-400">#mineshaft</span>
           </p>
           {/* Uncomment code below if you want to add an image */}
-          {/* <div class="pr-6 pt-3 md:flex-shrink">
+          {/* <div className="pt-3 pr-6 md:flex-shrink">
         <img
-          class="h-64 w-full rounded-lg"
+          className="w-full h-64 rounded-lg"
           src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg"
         />
-      </div> */}
+           </div> */}
           {/* end of the image */}
           {/* - - - - - - - -  */}
           <p
             id="time-ago"
-            class="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
+            className="text-sm font-medium leading-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-300"
           >
             {timeAgo}
           </p>
@@ -65,35 +66,24 @@ const SinglePostElement = (props) => {
           {/* div container for like and comment buttons below*/}
           <div class="flex w-full flex items-center">
             {/* Like button start*/}
-            <div id="like-button" class="flex py-2 text-center">
-              <a
-                href="#"
-                class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
-              >
-                <svg
-                  class="h-7 w-6 text-center"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-              </a>
-            </div>
+
+            <Like postId={props.id} />
             {/* Like button end */}
 
             {/* Comment button start*/}
-            <div id="comment-button" class="flex text-center">
+            <div
+              id="comment-button"
+              className="flex text-center"
+              data-cy="commentButton"
+              onClick={props.toggleComments}
+            >
               {/* Add the code to comment on post */}
               <a
                 href="#"
-                class="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
+                className="flex items-center w-12 px-3 py-2 mt-1 text-base font-medium leading-6 text-gray-500 rounded-full group hover:bg-blue-800 hover:text-blue-300"
               >
                 <svg
-                  class="h-6 w-6 text-center"
+                  className="w-6 h-6 text-center"
                   fill="none"
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -108,7 +98,6 @@ const SinglePostElement = (props) => {
             {/* Comment button end*/}
           </div>
         </div>
-        <hr class="border-gray-600" />
       </div>
     </>
   );

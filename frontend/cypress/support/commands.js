@@ -9,6 +9,7 @@
 // ***********************************************
 //
 //
+
 // -- This is a parent command --
 Cypress.Commands.add("signup", (email, password) => {
   cy.visit("/signup");
@@ -26,6 +27,12 @@ Cypress.Commands.add("login", (email, password) => {
   cy.get("#email").type(email);
   cy.get("#password").type(password);
   cy.get("#submit").click();
+});
+
+Cypress.Commands.add("makePost", (message) => {
+  cy.visit("/posts");
+  cy.get("#postInput").type(message);
+  cy.get("#submitPost").click();
 });
 //
 //

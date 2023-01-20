@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Alert from '../alert/Alert';
+import NavBar from "./NavBar";
 
 const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -7,13 +9,21 @@ const SignUpForm = ({ navigate }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userDob, setUserDob] = useState("");
+  const [renderAlert, setRenderAlert] = useState(false);
+  const [age, setAge] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const age = calculateAge(userDob);
+    setRenderAlert(true);
 
-    if (password === password2 && age >= 14) {
+    let age
+    if(userDob !== "") {
+      age = calculateAge(userDob)
+      setAge(calculateAge(userDob));
+    }
+
+    if (password.length >= 6 && password === password2 && age >= 14 && firstName.trim().length !== 0 && lastName.trim().length !== 0) {
       fetch("/users", {
         method: "post",
         headers: {
@@ -33,13 +43,7 @@ const SignUpForm = ({ navigate }) => {
           navigate("/signup");
         }
       });
-    } else {
-      if (password !== password2) {
-        window.alert("Passwords do not match!");
-      } else {
-        window.alert("User must be 14 years of age or older!");
-      }
-    }
+    };
   };
 
   const calculateAge = (userDob) => {
@@ -48,109 +52,98 @@ const SignUpForm = ({ navigate }) => {
     const ms = dateNow.getTime() - dob.getTime();
     const dif = new Date(ms);
     return Math.abs(dif.getUTCFullYear() - 1970);
+  };
+
+  const handleChange = (setFunction) => {
+   return (event) => {
+      setFunction(event.target.value);
+      setRenderAlert(false);
+    };
   }
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handleUserDobChange = (event) => {
-    setUserDob(event.target.value);
-  };
-
-  const handlePassword2Change = (event) => {
-    setPassword2(event.target.value);
-  };
 
   return (
     <>
-      <div>
-        <h1 className="font-lobster text-blue-500 text-center text-7xl">
-          acebook
-        </h1>
-      </div>
+      <NavBar />
+
       <div className="bg-grey-lighter h-screen font-sans">
         <div className="container mx-auto mt-20 flex justify-center items-center">
-          <form className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1" onSubmit={handleSubmit}>
+          <form
+            className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1"
+            onSubmit={handleSubmit}
+          >
             <h2 className="font-lobster text-blue-500 text-center text-3xl mb-14">
-              Sign up 
+              Sign up
             </h2>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="First Name"
                 id="first-name"
                 type="text"
                 value={firstName}
-                onChange={handleFirstNameChange}
+                onChange={handleChange(setFirstName)}
               />
+              <Alert firstName={firstName} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Last Name"
                 id="last-name"
                 type="text"
                 value={lastName}
-                onChange={handleLastNameChange}
+                onChange={handleChange(setLastName)}
               />
+              <Alert lastName={lastName} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="D.O.B."
                 id="user-dob"
                 type="date"
                 value={userDob}
-                onChange={handleUserDobChange}
+                onChange={handleChange(setUserDob)}
               />
+              <Alert age={age} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Email"
                 id="email"
                 type="text"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={handleChange(setEmail)}
               />
+              <Alert email={email} render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Password"
                 id="password"
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={handleChange(setPassword)}
               />
+              <Alert render={renderAlert} />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 placeholder="Confirm Password"
                 id="confirm-password"
                 type="password"
                 value={password2}
-                onChange={handlePassword2Change}
+                onChange={handleChange(setPassword2)}
               />
+              <Alert password = {password} password2={password2} render={renderAlert} />
             </div>
-            <div class="flex items-center justify-between mb-1">
+            <div className="flex items-center justify-between mb-1">
               <input
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
+                className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
                 role="submit-button"
                 id="submit"
                 type="submit"
                 value="Submit"
               />
               <a
-                class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="/login"
                 id="login-link"
                 data-cy="login-link"
