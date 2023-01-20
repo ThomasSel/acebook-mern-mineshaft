@@ -23,6 +23,7 @@ const CommentInputForm = (props) => {
       .then((response) => response.json())
       .then(async (data) => {
         props.updatePageData(data);
+        setNewComment('');
       });
   };
 

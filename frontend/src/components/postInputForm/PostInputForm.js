@@ -23,6 +23,7 @@ const PostInputForm = (props) => {
       .then((response) => response.json())
       .then(async (data) => {
         props.updatePageData(data);
+        setNewPost('');
       });
   };
 
