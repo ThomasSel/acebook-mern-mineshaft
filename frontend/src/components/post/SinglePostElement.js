@@ -88,13 +88,13 @@ const SinglePostElement = (props) => {
             id="comment-button"
             className="flex text-center"
             data-cy="commentButton"
-            onClick={props.toggleComments}
+            onClick={(event) => {
+              // event.preventDefault();
+              props.toggleComments();
+            }}
           >
             {/* Add the code to comment on post */}
-            <a
-              href="#"
-              className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
-            >
+            <a className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300">
               <svg
                 className="h-6 w-6 text-center"
                 fill="none"

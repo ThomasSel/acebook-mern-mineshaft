@@ -79,7 +79,7 @@ const SignUpForm = ({ navigate }) => {
     <>
       <NavBar />
 
-      <div className="bg-grey-lighter h-screen font-sans">
+      <div className="bg-grey-lighter h-screen font-sans pt-20">
         <div className="container mx-auto mt-20 flex justify-center items-center">
           <form
             className="bg-white shadow-md rounded px-32 pt-14 pb-14 mb-1"

@@ -45,7 +45,7 @@ const Feed = ({ navigate }) => {
     <>
       <NavBar logout={logout} />
 
-      <h2 className="font-lobster text-blue-500 text-center text-3xl mb-3 mt-3">
+      <h2 className="font-lobster text-blue-500 text-center text-3xl mb-3 mt-40">
         Posts
       </h2>
 
