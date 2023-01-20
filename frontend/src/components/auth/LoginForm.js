@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import NavBar from "./NavBar";
+import Alert from '../alert/Alert';
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [renderAlert, setRenderAlert] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -17,6 +19,7 @@ const LogInForm = ({ navigate }) => {
     });
 
     if (response.status !== 201) {
+      setRenderAlert(true);
       console.log("oop");
       navigate("/login");
     } else {
@@ -67,6 +70,7 @@ const LogInForm = ({ navigate }) => {
                 value={password}
                 onChange={handlePasswordChange}
               />
+              < Alert renderAlert={renderAlert} />
             </div>
             <div className="flex items-center justify-between mb-1">
               <input
