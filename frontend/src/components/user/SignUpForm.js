@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Alert from '../alert/Alert';
 import NavBar from "./NavBar";
 
 const SignUpForm = ({ navigate }) => {
@@ -8,13 +9,21 @@ const SignUpForm = ({ navigate }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userDob, setUserDob] = useState("");
+  const [renderAlert, setRenderAlert] = useState(false);
+  const [age, setAge] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const age = calculateAge(userDob);
+    setRenderAlert(true);
 
-    if (password === password2 && age >= 14) {
+    let age
+    if(userDob !== "") {
+      age = calculateAge(userDob)
+      setAge(calculateAge(userDob));
+    }
+
+    if (password.length >= 6 && password === password2 && age >= 14 && firstName.trim().length !== 0 && lastName.trim().length !== 0) {
       fetch("/users", {
         method: "post",
         headers: {
@@ -34,13 +43,7 @@ const SignUpForm = ({ navigate }) => {
           navigate("/signup");
         }
       });
-    } else {
-      if (password !== password2) {
-        window.alert("Passwords do not match!");
-      } else {
-        window.alert("User must be 14 years of age or older!");
-      }
-    }
+    };
   };
 
   const calculateAge = (userDob) => {
@@ -51,29 +54,12 @@ const SignUpForm = ({ navigate }) => {
     return Math.abs(dif.getUTCFullYear() - 1970);
   };
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-
-  const handleUserDobChange = (event) => {
-    setUserDob(event.target.value);
-  };
-
-  const handlePassword2Change = (event) => {
-    setPassword2(event.target.value);
-  };
+  const handleChange = (setFunction) => {
+   return (event) => {
+      setFunction(event.target.value);
+      setRenderAlert(false);
+    };
+  }
 
   return (
     <>
@@ -94,8 +80,9 @@ const SignUpForm = ({ navigate }) => {
                 id="first-name"
                 type="text"
                 value={firstName}
-                onChange={handleFirstNameChange}
+                onChange={handleChange(setFirstName)}
               />
+              <Alert firstName={firstName} render={renderAlert} />
             </div>
             <div className="mb-4">
               <input
@@ -103,8 +90,9 @@ const SignUpForm = ({ navigate }) => {
                 id="last-name"
                 type="text"
                 value={lastName}
-                onChange={handleLastNameChange}
+                onChange={handleChange(setLastName)}
               />
+              <Alert lastName={lastName} render={renderAlert} />
             </div>
             <div className="mb-4">
               <input
@@ -112,8 +100,9 @@ const SignUpForm = ({ navigate }) => {
                 id="user-dob"
                 type="date"
                 value={userDob}
-                onChange={handleUserDobChange}
+                onChange={handleChange(setUserDob)}
               />
+              <Alert age={age} render={renderAlert} />
             </div>
             <div className="mb-4">
               <input
@@ -121,8 +110,9 @@ const SignUpForm = ({ navigate }) => {
                 id="email"
                 type="text"
                 value={email}
-                onChange={handleEmailChange}
+                onChange={handleChange(setEmail)}
               />
+              <Alert email={email} render={renderAlert} />
             </div>
             <div className="mb-4">
               <input
@@ -130,8 +120,9 @@ const SignUpForm = ({ navigate }) => {
                 id="password"
                 type="password"
                 value={password}
-                onChange={handlePasswordChange}
+                onChange={handleChange(setPassword)}
               />
+              <Alert render={renderAlert} />
             </div>
             <div className="mb-4">
               <input
@@ -139,8 +130,9 @@ const SignUpForm = ({ navigate }) => {
                 id="confirm-password"
                 type="password"
                 value={password2}
-                onChange={handlePassword2Change}
+                onChange={handleChange(setPassword2)}
               />
+              <Alert password = {password} password2={password2} render={renderAlert} />
             </div>
             <div className="flex items-center justify-between mb-1">
               <input

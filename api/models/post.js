@@ -6,6 +6,10 @@ const commentSchema = new mongoose.Schema({
 
 const PostSchema = new mongoose.Schema(
   {
+    userId: String,
+    photoUrl: String,
+    firstName: String,
+    lastName: String,
     message: { type: String, required: true },
     comments: [commentSchema],
   },

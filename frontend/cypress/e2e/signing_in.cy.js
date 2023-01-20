@@ -12,20 +12,44 @@ describe("Signing in", () => {
     cy.url().should("include", "/posts");
   });
 
-  it("with missing password, redirects to '/login'", () => {
-    cy.visit("/login");
-    cy.get("#email").type("user@email.com");
-    cy.get("#submit").click();
+  describe("incorrect user details", () => {
+    it("with missing password, redirects to '/login' and raises an alert", () => {
+      cy.visit("/login");
+      cy.get("#email").type("user@email.com");
+      cy.get("#submit").click();
 
-    cy.url().should("include", "/login");
-  });
+      cy.url().should("include", "/login");
+      cy.get('[data-cy="alert-login"]').should('contain.text', "incorrect user details");
+    });
 
-  it("with missing email, redirects to '/login'", () => {
-    cy.visit("/login");
-    cy.get("#password").type("12345678");
-    cy.get("#submit").click();
+    it("with incorrect email, redirects to '/login' and raises an alert", () => {
+      cy.visit("/login");
+      cy.get("#email").type("user@email.com");
+      cy.get("#password").type("123456");
+      cy.get("#submit").click();
 
-    cy.url().should("include", "/login");
+      cy.url().should("include", "/login");
+      cy.get('[data-cy="alert-login"]').should('contain.text', "incorrect user details");
+    })
+
+    it("with missing email, redirects to '/login' and raises an alert", () => {
+      cy.visit("/login");
+      cy.get("#password").type("12345678");
+      cy.get("#submit").click();
+
+      cy.url().should("include", "/login");
+      cy.get('[data-cy="alert-login"]').should('contain.text', "incorrect user details");
+    });
+
+    it("with incorrect email, redirects to '/login' and raises an alert", () => {
+      cy.visit("/login");
+      cy.get("#email").type("wrong@email.com");
+      cy.get("#password").type("12345678");
+      cy.get("#submit").click();
+
+      cy.url().should("include", "/login");
+      cy.get('[data-cy="alert-login"]').should('contain.text', "incorrect user details");
+    })
   });
 
   it("redirects to the signup page", () => {

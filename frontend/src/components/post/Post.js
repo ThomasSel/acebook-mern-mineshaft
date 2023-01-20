@@ -33,6 +33,9 @@ const Post = (props) => {
       <div data-cy="post" className="container mx-auto max-w-lg">
         <SinglePostElement
           id={props.post._id}
+          photoUrl = {props.post.photoUrl}
+          firstName={props.post.firstName}
+          lastName={props.post.lastName}
           message={props.post.message}
           createdAt={props.post.createdAt}
           toggleComments={toggleComments}
