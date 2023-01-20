@@ -10,13 +10,18 @@ const SignUpForm = ({ navigate }) => {
   const [lastName, setLastName] = useState("");
   const [userDob, setUserDob] = useState("");
   const [renderAlert, setRenderAlert] = useState(false);
+  const [age, setAge] = useState(0);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     setRenderAlert(true);
 
-    const age = calculateAge(userDob);
+    let age
+    if(userDob !== "") {
+      age = calculateAge(userDob)
+      setAge(calculateAge(userDob));
+    }
 
     if (password.length >= 6 && password === password2 && age >= 14 && firstName.trim().length !== 0 && lastName.trim().length !== 0) {
       fetch("/users", {
@@ -97,7 +102,7 @@ const SignUpForm = ({ navigate }) => {
                 value={userDob}
                 onChange={handleChange(setUserDob)}
               />
-              <Alert userDob={userDob} render={renderAlert} />
+              <Alert age={age} render={renderAlert} />
             </div>
             <div className="mb-4">
               <input

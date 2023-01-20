@@ -14,13 +14,13 @@ describe("Alert rendered on client", () => {
   });
 
   it("no DOB is entered", () => {
-    cy.mount(<Alert userDob={""} render={true}/>);
+    cy.mount(<Alert userDob={""} age={""} render={true}/>);
    
     cy.get('[data-cy="alert-dob"]').should('contain.text', "user must be over 14years of age to sign up");
   });
 
   it("for user under 14 years of age", () => {
-    cy.mount(<Alert userDob={"2012-01-01"} render={true}/>);
+    cy.mount(<Alert age={12} render={true}/>);
    
     cy.get('[data-cy="alert-dob"]').should('contain.text', "user must be over 14years of age to sign up");
   });
