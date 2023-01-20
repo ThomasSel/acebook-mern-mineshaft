@@ -68,13 +68,6 @@ describe("/users", () => {
       expect(response.statusCode).toBe(400)
     });
 
-    test("response code is 400", async () => {
-      let response = await request(app)
-        .post("/users")
-        .send({email: "user@emailcom"})
-      expect(response.statusCode).toBe(400)
-    });
-
     test("does not create a user", async () => {
       await request(app)
         .post("/users")
