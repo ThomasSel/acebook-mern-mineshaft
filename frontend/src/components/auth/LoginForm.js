@@ -77,7 +77,7 @@ const LogInForm = ({ navigate }) => {
                 value="Submit"
               />
               <a
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                className="center font-bold text-sm text-blue-500 hover:text-blue-800"
                 href="/signup"
                 id="signup-link"
                 data-cy="signup-link"

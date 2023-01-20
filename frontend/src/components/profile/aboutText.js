@@ -31,7 +31,19 @@ const AboutText = (props) => {
               <br></br>
               <p>- The team at Mineshaft.</p>
             </div>
+            <div className="text-center bt-10">
+              <p>Change policy </p>
+              <a
+                className="center font-bold text-sm text-blue-500 hover:text-blue-800"
+                href="https://www.youtube.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>
+            </div>
           </form>
+          <div></div>
         </div>
       </div>
     </>
