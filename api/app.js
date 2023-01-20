@@ -1,3 +1,4 @@
+require('dotenv').config()
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
@@ -56,5 +57,12 @@ app.use((err, req, res) => {
   // respond with details of the error
   res.status(err.status || 500).json({ message: "server error" });
 });
+
+// attempting to deploy on Heroku
+var mongoose = require(‘mongoose’);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/acebook-mineshaft');
+
+const port = process.env.PORT || 3000;
+app.listen(port);
 
 module.exports = app;
