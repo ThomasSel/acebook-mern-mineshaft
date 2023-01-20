@@ -35,13 +35,21 @@ const props_userId = parseJwt(token).user_id
             setLikeAction('liked')
           }
         })
-        const newArray = []
+        // const newArray = []
         response.data.likes.map(like => {
-          console.log(like)
-          newArray.push(like.userId)
+          console.log(like.userId)
+          // if(newArray.includes(like.userId)){
+          // newArray.push(like.userId)
+          // }
+          // newArray.push(like.userId)
+          if(UserArray.includes(like.userId)){
+            
+          }
+          setUserArray(oldArray => [...oldArray, like.userId])
+
         })
-        setUserArray(newArray)
-        console.log(UserArray)
+       
+        console.log(`UserArray: ${UserArray}`)
 
       }else {
         alert('Failed to get likes')
