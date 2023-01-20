@@ -1,21 +1,26 @@
 import moment from "moment";
+import Like from '../like/Like'
 
 const SinglePostElement = (props) => {
+  // const postId = props.match.params.postId
   // seed is the random seed to generate random avatars
   const seed = Math.round(Math.random() * 100);
   // timeAgo uses momentjs to generate a time from now string e.g "4 minutes ago"
   const timeAgo = moment(new Date(props.createdAt)).fromNow();
 
+  // const postVariable = {
+  //   postId: postId
+  // }
   return (
     <>
       {/* div container for user photo, full name, username, time of post */}
       <div className="flex flex-shrink-0 p-4 pb-0">
-        <a href="#" className="group block flex-shrink-0">
+        <a href="#" className="flex-shrink-0 block group">
           <div className="flex items-center">
             <div>
               <img
                 id="user-photo"
-                className="inline-block h-10 w-10 rounded-full"
+                className="inline-block w-10 h-10 rounded-full"
                 // This is the link to the image of a user on their post
                 src={`https://avatars.dicebear.com/api/open-peeps/${seed}.svg`}
                 alt=""
@@ -40,14 +45,14 @@ const SinglePostElement = (props) => {
 
       <div className="pl-16">
         {/* post content appears here */}
-        <p className="width-auto flex-shrink text-base font-medium">
+        <p className="flex-shrink text-base font-medium width-auto">
           {props.message}
           <span className="text-blue-400">#mineshaft</span>
         </p>
         {/* Uncomment code below if you want to add an image */}
-        {/* <div className="pr-6 pt-3 md:flex-shrink">
+        {/* <div className="pt-3 pr-6 md:flex-shrink">
         <img
-          className="h-64 w-full rounded-lg"
+          className="w-full h-64 rounded-lg"
           src="https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg"
         />
       </div> */}
@@ -60,28 +65,12 @@ const SinglePostElement = (props) => {
           {timeAgo}
         </p>
 
-        {/* div container for like and comment buttons below*/}
-        <div className="flex w-full flex items-center">
-          {/* Like button start*/}
-          <div id="like-button" className="flex py-2 text-center">
-            <a
-              href="#"
-              className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
-            >
-              <svg
-                className="h-7 w-6 text-center"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </a>
-          </div>
-          {/* Like button end */}
+          {/* div container for like and comment buttons below*/}
+          <div class="flex w-full flex items-center">
+            {/* Like button start*/}
+
+              <Like postId={props.id}/>
+            {/* Like button end */}
 
           {/* Comment button start*/}
           <div
@@ -93,10 +82,10 @@ const SinglePostElement = (props) => {
             {/* Add the code to comment on post */}
             <a
               href="#"
-              className="group mt-1 flex w-12 items-center rounded-full px-3 py-2 text-base font-medium leading-6 text-gray-500 hover:bg-blue-800 hover:text-blue-300"
+              className="flex items-center w-12 px-3 py-2 mt-1 text-base font-medium leading-6 text-gray-500 rounded-full group hover:bg-blue-800 hover:text-blue-300"
             >
               <svg
-                className="h-6 w-6 text-center"
+                className="w-6 h-6 text-center"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
